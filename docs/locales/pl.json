@@ -21,7 +21,8 @@
     "farewell": "Pożegnanie",
     "error": "Nie udało się wczytać przewodnika.",
     "retry": "Spróbuj ponownie",
-    "tip": "Wskazówka od AWEN"
+    "tip": "Wskazówka od AWEN",
+    "beaches": "Plaże"
   },
   "chapters": [
     "Morze i nasze plaże",
@@ -31,8 +32,8 @@
     "Przyroda i przygoda",
     "Odpoczynek i dobre samopoczucie",
     "Sport i wielkie wydarzenia",
-    "Winnice Maldonado",
-    "Maldonado na każdą okazję i porę roku",
+    "Winiarnie Maldonado",
+    "Maldonado na różne okazje i pory roku",
     "Usługi i przydatne informacje",
     "Ulubione miejsca AWEN"
   ],
@@ -296,7 +297,7 @@
       "captions": [
         "Wyroby rzemieślnicze",
         "Smaki wsi",
-        "Chivito al plato",
+        "Chivito na talerzu",
         "Ciasto Ramón Novarro"
       ],
       "links": []
@@ -566,7 +567,7 @@
         ""
       ],
       "captions": [
-        "Bodega Cerro del Toro · MACA · Casapueblo · Plaże · Puerto de Punta del Este · La Musa Perfecta",
+        "Bodega Cerro del Toro · MACA · Casapueblo · Plaże · Port w Punta del Este · La Musa Perfecta",
         "Mapa poglądowa · bez zachowania skali"
       ],
       "links": []
@@ -747,7 +748,7 @@
         "",
         "Wybór od serca",
         "1. Casapueblo",
-        "2. Puerto de Punta del Este",
+        "2. Port w Punta del Este",
         "3. La Musa Perfecta",
         "4. MACA – Museo de Arte Contemporáneo Atchugarry",
         "5. Bodega Cerro del Toro",

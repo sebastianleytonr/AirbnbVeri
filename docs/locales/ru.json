@@ -21,7 +21,8 @@
     "farewell": "До встречи",
     "error": "Не удалось загрузить путеводитель.",
     "retry": "Попробовать снова",
-    "tip": "Совет от AWEN"
+    "tip": "Совет от AWEN",
+    "beaches": "Пляжи"
   },
   "chapters": [
     "Море и наши пляжи",
@@ -32,8 +33,8 @@
     "Отдых и хорошее самочувствие",
     "Спорт и крупные события",
     "Винодельни Мальдонадо",
-    "Мальдонадо для разных случаев и сезонов",
-    "Услуги и полезная информация",
+    "Мальдонадо в разные сезоны и по разным поводам",
+    "Службы и полезная информация",
     "Любимые места AWEN"
   ],
   "pages": {
@@ -296,7 +297,7 @@
       "captions": [
         "Изделия местных мастеров",
         "Сельские блюда",
-        "Chivito al plato",
+        "Чивито на тарелке",
         "Торт Ramón Novarro"
       ],
       "links": []
@@ -566,7 +567,7 @@
         ""
       ],
       "captions": [
-        "Bodega Cerro del Toro · MACA · Casapueblo · Пляжи · Puerto de Punta del Este · La Musa Perfecta",
+        "Bodega Cerro del Toro · MACA · Casapueblo · Пляжи · Порт Пунта-дель-Эсте · La Musa Perfecta",
         "Иллюстративная карта · без масштаба"
       ],
       "links": []
@@ -747,7 +748,7 @@
         "",
         "Выбрано с любовью",
         "1. Casapueblo",
-        "2. Puerto de Punta del Este",
+        "2. Порт Пунта-дель-Эсте",
         "3. La Musa Perfecta",
         "4. MACA – Museo de Arte Contemporáneo Atchugarry",
         "5. Bodega Cerro del Toro",

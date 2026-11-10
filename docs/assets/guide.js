@@ -16,7 +16,6 @@ let language = 'es';
 let dictionary;
 let resources;
 let formatNumber;
-let original;
 let request = 0;
 
 function element(tag, className, value) {
@@ -35,8 +34,7 @@ function icon(name) {
     book: 'M12 5.5C9 3.5 5 3.5 2.5 4.5v14c3-1.2 6.5-1 9.5 1 3-2 6.5-2.2 9.5-1v-14C19 3.5 15 3.5 12 5.5Zm0 0v14',
     down: 'M12 4v16m-6-6 6 6 6-6', right: 'M4 12h16m-6-6 6 6-6 6',
     next: 'm9 5 7 7-7 7', previous: 'm15 5-7 7 7 7',
-    index: 'M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01',
-    type: 'M3 19 9 5l6 14M5 15h8m3-3c5-3 6 3 4 5-2 3-6 2-5-1 1-2 5-2 6-2v5'
+    index: 'M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01'
   };
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.setAttribute('viewBox', '0 0 24 24');
@@ -60,11 +58,14 @@ function t(id, parameters = {}) {
 function pageLabel(page) {
   return t('page', {number: formatNumber.format(page), total: formatNumber.format(totalPages)});
 }
+function pageData(page) {
+  return dictionary.pages['p' + pad(page)];
+}
 function chapters(withPhotos) {
   const list = element('ol', withPhotos ? 'chapter-list' : '');
   starts.forEach((start, i) => {
     const item = element('li');
-    const title = dictionary.chapters[i];
+    const title = pageData(start).title;
     const anchor = link(pageHref(start), withPhotos ? 'chapter-link' : '');
     if (withPhotos) {
       const details = element('span', 'chapter-detail');
@@ -145,7 +146,7 @@ function facsimile(page, data) {
   img.lang = 'es';
   paper.append(img);
   if (page === 3) {
-    starts.forEach((start, i) => paper.append(hotspot(pageHref(start), dictionary.chapters[i], 78, 246 + i*67.5, 744, 65)));
+    starts.forEach((start, i) => paper.append(hotspot(pageHref(start), pageData(start).title, 78, 246 + i*67.5, 744, 65)));
     paper.append(hotspot(pageHref(2), t('welcome'), 77, 1090, 100, 49),
       hotspot(pageHref(4), t('how'), 190, 1090, 165, 49),
       hotspot(pageHref(38), t('farewell'), 365, 1090, 180, 49));
@@ -156,7 +157,16 @@ function facsimile(page, data) {
   return paper;
 }
 function transcription(page, data) {
-  const article = element('article', original ? 'sr-only' : 'transcription');
+  const facsimileVisible = language === 'es';
+  const article = element('article', facsimileVisible ? 'sr-only' : 'transcription');
+  if (page >= starts[0] && page < 37) {
+    const chapter = starts.filter(start => start <= page).length - 1;
+    const title = pageData(starts[chapter]).title;
+    const header = element('header', 'chapter-heading');
+    header.append(element('span', '', t('chapter', {number: formatNumber.format(chapter + 1)})));
+    if (data.title !== title) header.append(element('span', '', title));
+    article.append(header);
+  }
   article.append(element('h1', '', data.title));
   function tipsAt(position) {
     data.tips.forEach((value, i) => {
@@ -173,9 +183,9 @@ function transcription(page, data) {
     article.append(element('p', '', value));
     tipsAt(i+1);
   });
-  if (page === 3 && !original) article.append(chapters(false), otherPages());
+  if (page === 3 && !facsimileVisible) article.append(chapters(false), otherPages());
   const urls = resources[page] || [];
-  if (urls.length && !original) {
+  if (urls.length && !facsimileVisible) {
     const list = element('ul', 'resources');
     urls.forEach((r, i) => {
       const item = element('li');
@@ -188,29 +198,28 @@ function transcription(page, data) {
   for (let i = 0; i < Math.max(count, data.captions?.length || 0); i++) {
     const caption = data.captions?.[i];
     const fig = element('figure');
-    if (!original && i < count) fig.append(image(page === 1 ? 'assets/images/puerto.webp' : photo(page, i+1), page === 1 ? t('harbor') : (caption || data.title)));
+    if (!facsimileVisible && i < count) {
+      const img = image(page === 1 ? 'assets/images/puerto.webp' : photo(page, i+1), page === 1 ? t('harbor') : (caption || data.title));
+      if (page === 34) {
+        const map = element('div', 'favorites-map');
+        map.append(img, element('span', 'map-label map-beaches', t('beaches')), element('span', 'map-label map-harbor', t('harbor')));
+        fig.append(map);
+      } else fig.append(img);
+    }
     if (caption) fig.append(element('figcaption', '', caption));
     if (fig.childElementCount) article.append(fig);
   }
   return article;
 }
 function reader(page) {
-  const data = dictionary.pages['p' + pad(page)];
+  const data = pageData(page);
   const region = element('div', 'reader');
   const bar = element('div', 'toolbar');
   const controls = element('div', 'toolbar-inner');
-  const mode = element('button', 'mode');
-  mode.type = 'button';
-  mode.append(icon(original ? 'type' : 'book'), t(original ? 'read' : 'original'));
-  mode.addEventListener('click', () => {
-    original = !original;
-    render(true);
-    document.querySelector('.mode').focus({preventScroll: true});
-  });
-  controls.append(tocLink(), pager(page), mode);
+  controls.append(tocLink(), pager(page));
   bar.append(controls);
   region.append(bar);
-  if (original) region.append(facsimile(page, data));
+  if (language === 'es') region.append(facsimile(page, data));
   region.append(transcription(page, data));
   const bottom = element('div', 'reader-bottom');
   bottom.append(tocLink(), pager(page));
@@ -225,7 +234,7 @@ function currentPage() {
 function render(navigate = false) {
   if (!dictionary) return;
   const page = currentPage();
-  const title = page ? dictionary.pages['p' + pad(page)].title : t('title');
+  const title = page ? pageData(page).title : t('title');
   document.title = title + ' · AWEN';
   document.documentElement.lang = language;
   document.querySelector('meta[name="description"]').content = t('subtitle');
@@ -243,7 +252,7 @@ function render(navigate = false) {
   }
 }
 async function json(path) {
-  const response = await fetch(path);
+  const response = await fetch(path, {cache: 'no-cache'});
   if (!response.ok) throw new Error(path);
   return response.json();
 }
@@ -251,14 +260,13 @@ async function selectLanguage(code, remember = false) {
   const serial = ++request;
   try {
     const [next, book] = await Promise.all([
-      json('locales/' + code + '.json'), resources ? Promise.resolve({resources}) : json('assets/book.json')
+      json('locales/' + code + '.json?v=2'), resources ? Promise.resolve({resources}) : json('assets/book.json')
     ]);
     if (serial !== request) return;
     dictionary = next;
     resources = book.resources;
     language = code;
     selector.value = code;
-    original = code === 'es';
     formatNumber = new Intl.NumberFormat(code);
     if (remember) {
       try { localStorage.setItem(key, code); } catch { /* Storage is optional. */ }

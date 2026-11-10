@@ -1,0 +1,43 @@
+.favorites-map {
+  position: relative;
+  container-type: inline-size;
+  max-width: 717px;
+  margin-inline: auto;
+}
+
+.transcription .favorites-map img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+}
+
+.map-label {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  min-height: 5.4%;
+  padding: .12em .55em;
+  background: var(--panel);
+  color: var(--editorial);
+  font-family: var(--sans);
+  font-size: clamp(.625rem, 2.35cqw, 1.125rem);
+  font-weight: 600;
+  line-height: 1.1;
+  text-align: center;
+  clip-path: polygon(0 10%, 9% 3%, 50% 0, 91% 3%, 100% 10%, 96% 100%, 50% 94%, 4% 100%);
+}
+
+/* The ribbons follow their positions on the 817 × 626 illustration. */
+.map-beaches {
+  left: 72.8%;
+  top: 64.9%;
+  width: 19.5%;
+  transform: translateY(-50%);
+}
+
+.map-harbor {
+  left: 5.5%;
+  bottom: 0;
+  width: 34%;
+}

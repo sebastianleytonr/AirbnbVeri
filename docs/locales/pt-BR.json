@@ -21,18 +21,19 @@
     "farewell": "Despedida",
     "error": "Não foi possível carregar o guia.",
     "retry": "Tentar novamente",
-    "tip": "Uma dica da AWEN"
+    "tip": "Uma dica da AWEN",
+    "beaches": "Praias"
   },
   "chapters": [
     "O mar e nossas praias",
     "Cultura, arte e história",
-    "Passeios, vilas e compras",
+    "Passeios, vilarejos e compras",
     "Sabores de Maldonado",
     "Natureza e aventura",
     "Descanso e bem-estar",
     "Esportes e grandes eventos",
     "As vinícolas de Maldonado",
-    "Maldonado para cada ocasião e estação",
+    "Maldonado em cada ocasião e estação",
     "Serviços e informações úteis",
     "Os favoritos da AWEN"
   ],
@@ -296,7 +297,7 @@
       "captions": [
         "Produtos artesanais",
         "Sabores do campo",
-        "Chivito al plato",
+        "Chivito no prato",
         "Torta Ramón Novarro"
       ],
       "links": []
@@ -566,7 +567,7 @@
         ""
       ],
       "captions": [
-        "Bodega Cerro del Toro · MACA · Casapueblo · Praias · Puerto de Punta del Este · La Musa Perfecta",
+        "Bodega Cerro del Toro · MACA · Casapueblo · Praias · Porto de Punta del Este · La Musa Perfecta",
         "Mapa ilustrativo · sem escala"
       ],
       "links": []
@@ -747,7 +748,7 @@
         "",
         "Uma seleção feita com carinho",
         "1. Casapueblo",
-        "2. Puerto de Punta del Este",
+        "2. Porto de Punta del Este",
         "3. La Musa Perfecta",
         "4. MACA – Museo de Arte Contemporáneo Atchugarry",
         "5. Bodega Cerro del Toro",
