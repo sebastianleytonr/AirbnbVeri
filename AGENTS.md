@@ -59,10 +59,12 @@ El idioma inicial es español. El selector debe ofrecer siempre estos ocho idiom
 
 ## Cobertura de textos
 
-- Todo texto que agreguemos y que se muestre al usuario debe tener traducción en los ocho idiomas. Esta regla también se aplica a las interfaces de administración que creemos.
+- Todo texto visible que agreguemos al sitio o al administrador debe tener traducción en los ocho idiomas, salvo el contenido editable de los eventos, que sigue las reglas de esta sección.
 - Incluye títulos, navegación, botones, formularios, placeholders, validaciones, errores, confirmaciones, estados vacíos, mensajes de carga, textos del calendario, pies de página y metadatos descriptivos.
 - Traducir también los textos accesibles, como etiquetas para lectores de pantalla y textos alternativos de imágenes cuando correspondan.
 - El contenido editable, como títulos y descripciones de eventos o pies de fotos, debe contemplar valores por idioma cuando se diseñen sus archivos JSON y formularios.
+- En el administrador, los textos de cada evento se cargan manualmente. El nombre y el lugar son obligatorios en español. La información adicional es opcional y, si se incluye, también debe estar en español. Las otras siete traducciones son opcionales y pueden completarse después de publicar.
+- Para cada campo del evento, buscar el texto en el idioma elegido por el visitante, luego en inglés y por último en español. Un valor ausente, vacío o compuesto solo por espacios cuenta como traducción pendiente. Las etiquetas y las fechas del calendario siguen el idioma elegido.
 - No traducir nombres propios, marcas, direcciones, enlaces ni otros identificadores que deban conservarse.
 - Hacer traducciones naturales y coherentes con el contexto del alojamiento. El portugués debe ser de Brasil.
 - Evitar construir frases concatenando fragmentos traducidos. Usar mensajes completos con parámetros y variantes cuando haya plurales.
@@ -70,7 +72,7 @@ El idioma inicial es español. El selector debe ofrecer siempre estos ocho idiom
 
 ## Criterio de finalización
 
-- Al agregar o modificar un texto, actualizar sus traducciones en los ocho diccionarios en el mismo cambio.
+- Al agregar o modificar un texto de los diccionarios, actualizar sus traducciones en los ocho idiomas en el mismo cambio.
 - Antes de dar por terminada una funcionalidad, comprobar que todos los idiomas tengan las mismas claves y parámetros y que no se muestren claves internas como texto.
 - Comprobar que los textos largos y los caracteres de todos los idiomas se vean correctamente. Usar UTF-8.
 - Un recurso de respaldo en español puede evitar una pantalla rota ante un error, pero no sustituye las traducciones obligatorias.

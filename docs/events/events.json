@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "timeZone": "America/Montevideo",
+  "events": [
+    {
+      "id": "mock-paseo-costero",
+      "startsAt": "2026-11-14T10:00:00-03:00",
+      "mock": true,
+      "name": {
+        "es": "Paseo por la costa",
+        "en": "Coastal walk",
+        "pt-BR": "Passeio pela costa",
+        "fr": "Balade sur la côte",
+        "it": "Passeggiata sulla costa",
+        "de": "Spaziergang an der Küste",
+        "pl": "Spacer wzdłuż wybrzeża",
+        "ru": "Прогулка по побережью"
+      },
+      "location": {
+        "es": "Puerto de Punta del Este",
+        "en": "Puerto de Punta del Este",
+        "pt-BR": "Puerto de Punta del Este",
+        "fr": "Puerto de Punta del Este",
+        "it": "Puerto de Punta del Este",
+        "de": "Puerto de Punta del Este",
+        "pl": "Puerto de Punta del Este",
+        "ru": "Puerto de Punta del Este"
+      },
+      "extraInfo": {
+        "es": "Evento ficticio para probar el calendario. Encuentro en el Puerto de Punta del Este para un paseo tranquilo por la costa. No es una actividad confirmada.",
+        "en": "Fictional event for testing the calendar. Meet at Puerto de Punta del Este for a leisurely coastal walk. This is not a confirmed activity.",
+        "pt-BR": "Evento fictício para testar o calendário. Encontro no Puerto de Punta del Este para um passeio tranquilo pela costa. Não é uma atividade confirmada.",
+        "fr": "Événement fictif destiné à tester le calendrier. Rendez-vous au Puerto de Punta del Este pour une balade tranquille sur la côte. Il ne s’agit pas d’une activité confirmée.",
+        "it": "Evento fittizio per provare il calendario. Ritrovo al Puerto de Punta del Este per una tranquilla passeggiata sulla costa. Non è un’attività confermata.",
+        "de": "Fiktive Veranstaltung zum Testen des Kalenders. Treffpunkt am Puerto de Punta del Este für einen gemütlichen Spaziergang an der Küste. Dies ist keine bestätigte Aktivität.",
+        "pl": "Fikcyjne wydarzenie do testowania kalendarza. Spotkanie w Puerto de Punta del Este przed spokojnym spacerem wzdłuż wybrzeża. To nie jest potwierdzona atrakcja.",
+        "ru": "Вымышленное событие для проверки календаря. Встреча в Puerto de Punta del Este перед неспешной прогулкой по побережью. Это не подтверждённое мероприятие."
+      }
+    },
+    {
+      "id": "mock-musica-acustica",
+      "startsAt": "2026-11-21T18:00:00-03:00",
+      "mock": true,
+      "name": {
+        "es": "Encuentro de música acústica",
+        "en": "Acoustic music gathering",
+        "pt-BR": "Encontro de música acústica",
+        "fr": "Rencontre musicale acoustique",
+        "it": "Incontro di musica acustica",
+        "de": "Treffen mit akustischer Musik",
+        "pl": "Spotkanie z muzyką akustyczną",
+        "ru": "Вечер акустической музыки"
+      },
+      "location": {
+        "es": "AWEN",
+        "en": "AWEN",
+        "pt-BR": "AWEN",
+        "fr": "AWEN",
+        "it": "AWEN",
+        "de": "AWEN",
+        "pl": "AWEN",
+        "ru": "AWEN"
+      },
+      "extraInfo": {
+        "es": "Evento ficticio para probar el calendario. Una tarde de música acústica y encuentro en AWEN. No es una actividad confirmada.",
+        "en": "Fictional event for testing the calendar. An evening of acoustic music and company at AWEN. This is not a confirmed activity.",
+        "pt-BR": "Evento fictício para testar o calendário. Um fim de tarde de música acústica e convívio na AWEN. Não é uma atividade confirmada.",
+        "fr": "Événement fictif destiné à tester le calendrier. Une soirée de musique acoustique et de convivialité chez AWEN. Il ne s’agit pas d’une activité confirmée.",
+        "it": "Evento fittizio per provare il calendario. Una serata di musica acustica e compagnia ad AWEN. Non è un’attività confermata.",
+        "de": "Fiktive Veranstaltung zum Testen des Kalenders. Ein Abend mit akustischer Musik und gemütlichem Beisammensein bei AWEN. Dies ist keine bestätigte Aktivität.",
+        "pl": "Fikcyjne wydarzenie do testowania kalendarza. Wieczór muzyki akustycznej i wspólnego spędzania czasu w AWEN. To nie jest potwierdzona atrakcja.",
+        "ru": "Вымышленное событие для проверки календаря. Вечер акустической музыки и общения в AWEN. Это не подтверждённое мероприятие."
+      }
+    }
+  ]
+}

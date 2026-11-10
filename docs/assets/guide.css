@@ -131,6 +131,10 @@ footer i { height: 15px; border-left: 1px solid var(--gold); }
 .transcription ul, .transcription ol { padding-inline-start: 1.5em; }
 .transcription .resources { border-top: 1px solid var(--rule); margin-top: 1.8em; }
 .error { margin: 60px auto; width: min(500px, 90%); }
+.local-folder { padding-block: 20px; font-size: .875rem; line-height: 1.5; }
+.local-folder button { min-height: 44px; border: 1px solid var(--rule); border-radius: 4px; background: var(--background); color: var(--action); padding: 8px 14px; }
+.local-folder button:hover { background: var(--panel); }
+.local-folder p:not(:empty) { margin-top: 8px; }
 @media(max-width: 760px) {
   .masthead-inner, .wrap { width: 92%; }
   .masthead-inner { gap: 22px; min-height: 70px; }

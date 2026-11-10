@@ -26,6 +26,7 @@ let dictionary;
 let resources;
 let formatNumber;
 let request = 0;
+let localFolderStatus = '';
 const languagePicker = createLanguagePicker();
 
 function createLanguagePicker() {
@@ -53,7 +54,7 @@ function createLanguagePicker() {
     svg.setAttribute('aria-hidden', 'true');
     svg.setAttribute('focusable', 'false');
     const use = document.createElementNS(svg.namespaceURI, 'use');
-    use.setAttribute('href', 'assets/flags.svg#' + code);
+    use.setAttribute('href', '#flag-' + code);
     svg.append(use);
     return svg;
   }
@@ -169,7 +170,8 @@ function image(src, alt, lazy = true) {
   return img;
 }
 function t(id, parameters = {}) {
-  return dictionary.ui[id].replace(/\{(\w+)\}/g, (_, name) => parameters[name]);
+  const value = id.includes('.') ? id.split('.').reduce((entry, key) => entry[key], dictionary) : dictionary.ui[id];
+  return value.replace(/\{(\w+)\}/g, (_, name) => parameters[name]);
 }
 function pageData(page) {
   return dictionary.pages['p' + pad(page)];
@@ -356,16 +358,23 @@ function currentPage() {
 }
 function render(navigate = false) {
   if (!dictionary) return;
+  AwenCalendar.unmount();
+  const calendar = location.hash === '#calendario';
   const page = currentPage();
-  const title = page ? sectionTitle(sectionStarts[sectionIndex(page)]) : t('title');
+  const title = calendar ? t('calendar.title') : page ? sectionTitle(sectionStarts[sectionIndex(page)]) : t('title');
   document.title = title + ' · AWEN';
   document.documentElement.lang = language;
-  document.querySelector('meta[name="description"]').content = t('subtitle');
+  document.querySelector('meta[name="description"]').content = t(calendar ? 'calendar.subtitle' : 'subtitle');
   document.querySelector('#tab').textContent = t('title');
+  document.querySelector('#calendar-tab').textContent = t('calendar.title');
+  const activeTab = document.querySelector(calendar ? '#calendar-tab' : '#tab');
+  document.querySelector(calendar ? '#tab' : '#calendar-tab').removeAttribute('aria-current');
+  activeTab.setAttribute('aria-current', 'page');
   document.querySelector('#skip').textContent = t('skip');
   selector.setAttribute('aria-label', t('language'));
   languagePicker.sync();
-  main.replaceChildren(page ? reader(page) : home());
+  if (location.protocol === 'file:') syncLocalFolder();
+  main.replaceChildren(calendar ? AwenCalendar.render({language, t: (id, params) => t('calendar.' + id, params)}) : page ? reader(page) : home());
   if (location.hash === '#indice') {
     const index = document.querySelector('#indice');
     index.focus({preventScroll: true});
@@ -375,20 +384,47 @@ function render(navigate = false) {
     if (navigate) target.focus({preventScroll: true});
     target.scrollIntoView();
   } else if (navigate) {
-    if (page) main.focus({preventScroll: true});
+    if (page || calendar) main.focus({preventScroll: true});
     window.scrollTo(0, 0);
   }
 }
-async function json(path) {
-  const response = await fetch(path, {cache: 'no-cache'});
-  if (!response.ok) throw new Error(path);
-  return response.json();
+function syncLocalFolder() {
+  document.querySelector('#local-folder').hidden = false;
+  document.querySelector('#choose-local-folder').textContent = t('chooseLocalFolder');
+  document.querySelector('#local-folder-hint').textContent = t('localFolderHint');
+  document.querySelector('#local-folder-status').textContent = localFolderStatus ? t(localFolderStatus) : '';
+}
+if (location.protocol === 'file:') {
+  const choose = document.querySelector('#choose-local-folder');
+  const input = document.querySelector('#local-folder-input');
+  choose.addEventListener('click', () => input.click());
+  input.addEventListener('change', async () => {
+    if (!input.files.length) return;
+    choose.disabled = true;
+    try {
+      const data = await AwenData.readFolder(input.files);
+      AwenCalendar.replaceEvents(data['events/events.json']);
+      AwenData.useFolder(data);
+      ++request; // A pending language change may still be reading the previous files.
+      dictionary = data['locales/' + language + '.json'];
+      resources = data['assets/book.json'].resources;
+      selector.value = language;
+      localFolderStatus = 'localFolderLoaded';
+      render();
+    } catch {
+      localFolderStatus = 'localFolderError';
+      syncLocalFolder();
+    } finally {
+      input.value = '';
+      choose.disabled = false;
+    }
+  });
 }
 async function selectLanguage(code, remember = false) {
   const serial = ++request;
   try {
     const [next, book] = await Promise.all([
-      json('locales/' + code + '.json?v=6'), resources ? Promise.resolve({resources}) : json('assets/book.json')
+      AwenData.read('locales/' + code + '.json?v=6'), resources ? Promise.resolve({resources}) : AwenData.read('assets/book.json')
     ]);
     if (serial !== request) return;
     dictionary = next;
