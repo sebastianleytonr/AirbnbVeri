@@ -28,7 +28,7 @@
   },
   "calendar": {
     "nextEvent": "Ближайшее событие",
-    "fullCalendar": "Посмотреть весь календарь",
+    "fullCalendar": "Календарь",
     "noUpcoming": "Предстоящих событий нет.",
     "eventSummaryUnavailable": "Не удалось загрузить ближайшее событие.",
     "title": "Календарь событий",

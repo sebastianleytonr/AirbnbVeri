@@ -119,18 +119,15 @@ const AwenCalendar = (() => {
         view = 'month';
       }
     });
-    const dateTime = new Intl.DateTimeFormat(language, {
-      timeZone, day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short'
-    });
     function show(events) {
       if (!row.isConnected) return;
       const now = Date.now();
       next = events.find(event => event.instant.getTime() > now);
       if (next) {
-        const when = node('time', '', dateTime.format(next.instant));
-        when.dateTime = next.startsAt;
-        info.replaceChildren(node('span', 'next-event-label', t('nextEvent')), eventText('strong', next.name, language), when);
-        if (next.mock) info.append(node('small', 'next-event-mock', t('mock')));
+        const name = eventText('strong', next.name, language);
+        name.title = name.textContent;
+        info.replaceChildren(name);
+        if (next.mock) info.append(node('span', 'sr-only', t('mock')));
         // A tab can stay open past the event's start. Cap long delays at the browser timer limit.
         nextEventTimer = setTimeout(() => show(events), Math.min(next.instant.getTime() - now, 2147483647));
       } else {

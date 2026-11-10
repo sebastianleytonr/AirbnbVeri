@@ -392,7 +392,7 @@ async function selectLanguage(code, remember = false) {
   const serial = ++request;
   try {
     const [next, book] = await Promise.all([
-      AwenData.read('locales/' + code + '.json?v=8'), resources ? Promise.resolve({resources}) : AwenData.read('assets/book.json')
+      AwenData.read('locales/' + code + '.json?v=9'), resources ? Promise.resolve({resources}) : AwenData.read('assets/book.json')
     ]);
     if (serial !== request) return;
     dictionary = next;

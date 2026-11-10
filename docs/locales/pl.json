@@ -28,7 +28,7 @@
   },
   "calendar": {
     "nextEvent": "Najbliższe wydarzenie",
-    "fullCalendar": "Zobacz pełny kalendarz",
+    "fullCalendar": "Kalendarz",
     "noUpcoming": "Nie ma nadchodzących wydarzeń.",
     "eventSummaryUnavailable": "Nie udało się wczytać najbliższego wydarzenia.",
     "title": "Kalendarz wydarzeń",
