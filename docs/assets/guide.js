@@ -1,9 +1,18 @@
 'use strict';
 
 const starts = [5, 8, 11, 14, 16, 19, 22, 25, 28, 31, 34];
+const sectionStarts = [1, ...starts, 37];
 const extras = [[2, 'welcome'], [4, 'how'], [37, 'credits'], [38, 'farewell']];
-const imageCounts = {2:1, 5:2, 7:1, 8:2, 11:3, 13:1, 14:4, 16:3,
-  18:1, 19:2, 21:1, 22:3, 24:1, 25:4, 27:1, 28:3, 30:1, 31:1, 34:1};
+// Reserve space for photos so a link into a chapter stays aligned as images load.
+const photoSizes = {
+  1: [[893, 959]], 2: [[405, 304]], 5: [[460, 631], [365, 653]], 7: [[709, 307]],
+  8: [[695, 384], [655, 331]], 11: [[849, 328], [414, 292], [408, 292]], 13: [[712, 309]],
+  14: [[416, 700], [400, 182], [400, 182], [400, 233]], 16: [[887, 377], [397, 353], [465, 353]],
+  18: [[715, 307]], 19: [[807, 417], [807, 350]], 21: [[712, 307]],
+  22: [[831, 368], [404, 287], [406, 287]], 24: [[712, 307]],
+  25: [[829, 303], [382, 252], [201, 382], [203, 382]], 27: [[712, 309]],
+  28: [[829, 349], [406, 284], [404, 284]], 30: [[712, 307]], 31: [[893, 713]], 34: [[817, 626]]
+};
 const totalPages = 38;
 const main = document.querySelector('main');
 const selector = document.querySelector('#language');
@@ -162,9 +171,6 @@ function image(src, alt, lazy = true) {
 function t(id, parameters = {}) {
   return dictionary.ui[id].replace(/\{(\w+)\}/g, (_, name) => parameters[name]);
 }
-function pageLabel(page) {
-  return t('page', {number: formatNumber.format(page), total: formatNumber.format(totalPages)});
-}
 function pageData(page) {
   return dictionary.pages['p' + pad(page)];
 }
@@ -211,26 +217,34 @@ function home() {
   wrapper.append(cover, section);
   return wrapper;
 }
-function pager(page) {
-  const group = element('div', 'pager');
-  function turn(delta, action) {
-    const target = page + delta;
-    if (target < 1 || target > totalPages) {
-      const disabled = element('span', 'page-turn');
-      disabled.setAttribute('aria-hidden', 'true');
-      disabled.append(icon(action));
-      return disabled;
-    }
-    const anchor = link(pageHref(target), 'page-turn');
-    anchor.setAttribute('aria-label', t(action));
-    anchor.title = t(action);
-    anchor.append(icon(action));
-    return anchor;
-  }
-  const count = element('output', '', formatNumber.format(page) + ' / ' + formatNumber.format(totalPages));
-  count.setAttribute('aria-label', pageLabel(page));
-  group.append(turn(-1, 'previous'), count, turn(1, 'next'));
-  return group;
+function sectionIndex(page) {
+  return sectionStarts.filter(start => start <= page).length - 1;
+}
+function sectionTitle(start) {
+  if (start === 1) return t('introduction');
+  if (start === 37) return t('closing');
+  return pageData(start).title;
+}
+function chapterTurn(start, previous) {
+  const anchor = link(pageHref(start), 'chapter-turn');
+  anchor.rel = previous ? 'prev' : 'next';
+  const labels = element('span', 'chapter-destination');
+  const isChapter = starts.includes(start);
+  const label = previous
+    ? (isChapter ? 'previousChapter' : 'previousSection')
+    : (isChapter ? 'nextChapter' : 'nextSection');
+  labels.append(element('span', 'direction', t(label)), element('strong', '', sectionTitle(start)));
+  if (previous) anchor.append(icon('previous'), labels);
+  else anchor.append(labels, icon('next'));
+  return anchor;
+}
+function chapterNav(index) {
+  const nav = element('nav', 'chapter-nav');
+  nav.setAttribute('aria-label', t('title'));
+  if (index > 0) nav.append(chapterTurn(sectionStarts[index - 1], true));
+  nav.append(tocLink());
+  if (index + 1 < sectionStarts.length) nav.append(chapterTurn(sectionStarts[index + 1], false));
+  return nav;
 }
 function tocLink() {
   const anchor = link('#indice', 'toc-link');
@@ -245,9 +259,9 @@ function hotspot(href, label, x, y, width, height) {
     width: width/893*100+'%', height: height/1263*100+'%'});
   return anchor;
 }
-function facsimile(page, data) {
+function facsimile(page, data, lazy) {
   const paper = element('div', 'paper');
-  const img = image('assets/pages/' + pad(page) + '.webp', '', false);
+  const img = image('assets/pages/' + pad(page) + '.webp', '', lazy);
   img.width = 893;
   img.height = 1263;
   img.lang = 'es';
@@ -263,18 +277,15 @@ function facsimile(page, data) {
   }
   return paper;
 }
-function transcription(page, data) {
+function transcription(page, data, start) {
   const facsimileVisible = language === 'es';
   const article = element('article', facsimileVisible ? 'sr-only' : 'transcription');
-  if (page >= starts[0] && page < 37) {
-    const chapter = starts.filter(start => start <= page).length - 1;
-    const title = pageData(starts[chapter]).title;
-    const header = element('header', 'chapter-heading');
-    header.append(element('span', '', t('chapter', {number: formatNumber.format(chapter + 1)})));
-    if (data.title !== title) header.append(element('span', '', title));
-    article.append(header);
+  if (page === start && starts.includes(start)) {
+    article.append(element('header', 'chapter-heading', t('chapter', {number: formatNumber.format(starts.indexOf(start) + 1)})));
   }
-  article.append(element('h1', '', data.title));
+  if (page === start || data.title !== pageData(start).title) {
+    article.append(element(page === start ? 'h1' : 'h2', '', data.title));
+  }
   function tipsAt(position) {
     data.tips.forEach((value, i) => {
       if ((data.tipAt?.[i] ?? data.paragraphs.length) !== position) return;
@@ -286,7 +297,7 @@ function transcription(page, data) {
   }
   tipsAt(0);
   data.paragraphs.forEach((value, i) => {
-    if (data.headings?.[i]) article.append(element('h2', '', data.headings[i]));
+    if (data.headings?.[i]) article.append(element(page === start ? 'h2' : 'h3', '', data.headings[i]));
     article.append(element('p', '', value));
     tipsAt(i+1);
   });
@@ -301,12 +312,14 @@ function transcription(page, data) {
     });
     article.append(list);
   }
-  const count = page === 1 ? 1 : (imageCounts[page] || 0);
+  const sizes = photoSizes[page] || [];
+  const count = sizes.length;
   for (let i = 0; i < Math.max(count, data.captions?.length || 0); i++) {
     const caption = data.captions?.[i];
     const fig = element('figure');
     if (!facsimileVisible && i < count) {
       const img = image(page === 1 ? 'assets/images/puerto.webp' : photo(page, i+1), page === 1 ? t('harbor') : (caption || data.title));
+      [img.width, img.height] = sizes[i];
       if (page === 34) {
         const map = element('div', 'favorites-map');
         map.append(img, element('span', 'map-label map-beaches', t('beaches')), element('span', 'map-label map-harbor', t('harbor')));
@@ -319,18 +332,21 @@ function transcription(page, data) {
   return article;
 }
 function reader(page) {
-  const data = pageData(page);
+  const index = sectionIndex(page);
+  const start = sectionStarts[index];
+  const end = sectionStarts[index + 1] || totalPages + 1;
   const region = element('div', 'reader');
-  const bar = element('div', 'toolbar');
-  const controls = element('div', 'toolbar-inner');
-  controls.append(tocLink(), pager(page));
-  bar.append(controls);
-  region.append(bar);
-  if (language === 'es') region.append(facsimile(page, data));
-  region.append(transcription(page, data));
-  const bottom = element('div', 'reader-bottom');
-  bottom.append(tocLink(), pager(page));
-  region.append(bottom);
+  const content = element('div', 'chapter-content');
+  for (let number = start; number < end; number++) {
+    const data = pageData(number);
+    const part = element('div', 'reader-part');
+    part.id = 'pagina-' + number;
+    part.tabIndex = -1;
+    if (language === 'es') part.append(facsimile(number, data, number !== start && number !== page));
+    part.append(transcription(number, data, start));
+    content.append(part);
+  }
+  region.append(chapterNav(index), content, chapterNav(index));
   return region;
 }
 function currentPage() {
@@ -341,7 +357,7 @@ function currentPage() {
 function render(navigate = false) {
   if (!dictionary) return;
   const page = currentPage();
-  const title = page ? pageData(page).title : t('title');
+  const title = page ? sectionTitle(sectionStarts[sectionIndex(page)]) : t('title');
   document.title = title + ' · AWEN';
   document.documentElement.lang = language;
   document.querySelector('meta[name="description"]').content = t('subtitle');
@@ -354,6 +370,10 @@ function render(navigate = false) {
     const index = document.querySelector('#indice');
     index.focus({preventScroll: true});
     index.scrollIntoView();
+  } else if (page && !sectionStarts.includes(page)) {
+    const target = document.getElementById('pagina-' + page);
+    if (navigate) target.focus({preventScroll: true});
+    target.scrollIntoView();
   } else if (navigate) {
     if (page) main.focus({preventScroll: true});
     window.scrollTo(0, 0);
@@ -368,7 +388,7 @@ async function selectLanguage(code, remember = false) {
   const serial = ++request;
   try {
     const [next, book] = await Promise.all([
-      json('locales/' + code + '.json?v=2'), resources ? Promise.resolve({resources}) : json('assets/book.json')
+      json('locales/' + code + '.json?v=6'), resources ? Promise.resolve({resources}) : json('assets/book.json')
     ]);
     if (serial !== request) return;
     dictionary = next;
@@ -403,11 +423,12 @@ window.addEventListener('hashchange', () => render(true));
 document.addEventListener('keydown', event => {
   const page = currentPage();
   if (!page || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || event.target.closest('select,input,textarea,button')) return;
-  const next = page + (event.key === 'ArrowLeft' ? -1 : event.key === 'ArrowRight' ? 1 : 0);
-  if (next !== page && next >= 1 && next <= totalPages) {
-    event.preventDefault();
-    location.hash = pageHref(next);
-  }
+  const direction = event.key === 'ArrowLeft' ? -1 : event.key === 'ArrowRight' ? 1 : 0;
+  if (!direction) return;
+  const target = sectionStarts[sectionIndex(page) + direction];
+  if (!target) return;
+  event.preventDefault();
+  location.hash = pageHref(target);
 });
 let initial;
 try { initial = localStorage.getItem(key); } catch { /* First visit. */ }
