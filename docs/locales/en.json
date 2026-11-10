@@ -6,17 +6,11 @@
     "localFolderError": "Could not read the data. Choose the docs folder and check its JSON files.",
     "title": "Places to discover",
     "subtitle": "An invitation to explore, enjoy and fall in love with Maldonado.",
-    "open": "Open the book",
-    "viewIndex": "View contents",
     "contents": "Table of contents",
     "index": "Contents",
     "chapter": "Chapter {number}",
     "previousChapter": "Previous chapter",
     "nextChapter": "Next chapter",
-    "previousSection": "Previous section",
-    "nextSection": "Next section",
-    "introduction": "Introduction",
-    "closing": "Closing pages",
     "language": "Language",
     "skip": "Skip to content",
     "previous": "Previous page",
@@ -26,8 +20,6 @@
     "original": "View Spanish original",
     "harbor": "Punta del Este harbour",
     "welcome": "Welcome",
-    "how": "How to use this guide",
-    "credits": "Sources and credits",
     "farewell": "Farewell",
     "error": "The guide could not be loaded.",
     "retry": "Try again",
@@ -35,6 +27,10 @@
     "beaches": "Beaches"
   },
   "calendar": {
+    "nextEvent": "Next event",
+    "fullCalendar": "View full calendar",
+    "noUpcoming": "There are no upcoming events.",
+    "eventSummaryUnavailable": "The next event could not be loaded.",
     "title": "Events calendar",
     "subtitle": "Find things to enjoy during your stay.",
     "month": "Month",
@@ -78,6 +74,7 @@
     "moreMany": "+{count} more events"
   },
   "chapters": [
+    "Welcome",
     "The sea and our beaches",
     "Culture, art and history",
     "Outings, towns and shopping",
@@ -88,7 +85,8 @@
     "The wineries of Maldonado",
     "Maldonado for every occasion and season",
     "Services and practical information",
-    "AWEN’s favourites"
+    "AWEN’s favourites",
+    "Farewell"
   ],
   "pages": {
     "p01": {
@@ -125,26 +123,6 @@
       "title": "Chapter index",
       "paragraphs": [],
       "headings": [],
-      "tips": [],
-      "captions": [],
-      "links": []
-    },
-    "p04": {
-      "title": "How to use this guide",
-      "paragraphs": [
-        "Each chapter opens with a cover designed for AWEN. Inside you'll find sights, local flavours, sports, experiences to enjoy and practical information.",
-        "Opening hours, prices, bookings and event schedules can change. The QR codes open official sources. Check them before planning your visit.",
-        "In this first edition, QR codes point directly to official pages. The links are clickable in the PDF too. Updating a printed QR code without reprinting it would require a redirect managed by AWEN. That feature is not active yet.",
-        "The maps and illustrations are for orientation and do not replace road signs or navigation charts. Images that do not document a particular place are marked as illustrations.",
-        "November 2026 · Prepared for AWEN guests in Maldonado, Uruguay."
-      ],
-      "headings": [
-        "Let the pictures inspire you",
-        "Check what might have changed",
-        "About the QR codes",
-        "A detail to keep in mind",
-        "Edition"
-      ],
       "tips": [],
       "captions": [],
       "links": []
@@ -809,29 +787,6 @@
       ],
       "captions": [],
       "links": []
-    },
-    "p37": {
-      "title": "Sources and credits",
-      "paragraphs": [
-        "This publication adapts the AWEN editorial layout and chapter covers approved by Silvia and Danilo. The links below let you check information that may change. Photographs supplied by the hosts require permission for use before a public print run."
-      ],
-      "tips": [],
-      "headings": [
-        ""
-      ],
-      "captions": [
-        "This guide does not replace official sources, emergency services or safety instructions."
-      ],
-      "links": [
-        "Intendencia de Maldonado · Tourism",
-        "Intendencia de Maldonado · Events calendar",
-        "Ministerio de Turismo · Punta del Este",
-        "Museo Taller Casapueblo",
-        "MACA · Museo de Arte Contemporáneo Atchugarry",
-        "Museo Arboretum Lussich",
-        "Bodega Cerro del Toro",
-        "Emergency numbers · Antel"
-      ]
     },
     "p38": {
       "title": "Thank you for choosing AWEN!",

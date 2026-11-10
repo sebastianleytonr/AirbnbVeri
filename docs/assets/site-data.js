@@ -63,8 +63,8 @@ const AwenData = (() => {
       if (Object.keys(locale[group]).length !== Object.keys(spanish[group]).length) throw new Error('Inconsistent messages');
     }
     if (!strings(locale.chapters) || !record(locale.pages)) throw new Error('Invalid guide');
-    for (let number = 1; number <= 38; number++) {
-      const page = locale.pages['p' + String(number).padStart(2, '0')];
+    for (const key of Object.keys(reference.pages)) {
+      const page = locale.pages[key];
       if (!page || typeof page.title !== 'string' || !page.title.trim()) throw new Error('Missing page');
       for (const field of ['paragraphs', 'headings', 'tips', 'captions', 'links']) {
         if (!strings(page[field])) throw new Error('Invalid page content');

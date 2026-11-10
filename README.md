@@ -30,7 +30,7 @@ Los controles locales dependen de la configuración de cada computadora: `core.h
 
 La carpeta pública es `docs/`. Si GitHub Pages publica desde `main` y `/(root)`, la guía se abre en `/AirbnbVeri/docs/`. Si la fuente es `/docs`, se abre en `/AirbnbVeri/`. Las herramientas locales no se deben adjuntar a releases, subir como artefactos públicos ni incluir en la web.
 
-Para usar el sitio en Windows, abrí `docs/index.html` con doble clic y conservá junto a él las carpetas de `docs/`. La guía, el calendario y los ocho idiomas funcionan desde el disco. El índice permite abrir los once capítulos. Cada página tiene un enlace propio, por ejemplo `#pagina-5`.
+Para usar el sitio en Windows, abrí `docs/index.html` con doble clic y conservá junto a él las carpetas de `docs/`. La guía, el calendario y los ocho idiomas funcionan desde el disco. Desde el índice de la portada podés abrir cualquiera de los trece capítulos, desde «Bienvenida» (capítulo 0) hasta «Despedida» (capítulo 12). Cada página de lectura conserva su enlace, por ejemplo `#pagina-5`.
 
 Al abrir el HTML desde el disco, el sitio usa una copia de los JSON incluida en `docs/assets/file-data.js`. Para probar una edición de los JSON, pulsá «Leer datos de la carpeta del sitio» al pie de la página y elegí la carpeta `docs`. El selector del navegador autoriza la lectura local. El sitio lee los ocho diccionarios, los enlaces de la guía y los eventos, y actualiza la vista. Podés volver a elegir la carpeta después de otra edición. La selección dura hasta que recargues o cierres la página.
 
@@ -40,7 +40,7 @@ Si querés incorporar los datos editados a la copia que se abre por defecto con 
 
 La pestaña «Calendario de Eventos» se abre en `#calendario`. Incluye vistas de mes, semana y día, navegación anterior/siguiente, botón Hoy y selector de fecha. Las semanas empiezan el lunes. Los días con eventos se destacan; al tocarlos se abre un diálogo con todos sus eventos, nombre, fecha, hora, lugar e información extra. Se cierra con el botón Cerrar, Escape o tocando fuera.
 
-El calendario usa JavaScript nativo. En GitHub Pages lee `docs/events/events.json` al abrir la pestaña y conserva los datos durante esa visita. Con unos 15 eventos mensuales (180 al año), un archivo evita peticiones por mes. Al actualizar el JSON publicado, recargá la página para ver la nueva versión.
+La portada muestra el próximo evento según su hora de inicio y enlaza al mes correspondiente del calendario. En GitHub Pages, la portada y el calendario comparten una única lectura de `docs/events/events.json` durante la visita. Al actualizar el JSON publicado, recargá la página para ver la nueva versión.
 
 El documento contiene `schemaVersion: 1`, `timeZone: "America/Montevideo"` y un array `events`. Cada evento incluye:
 

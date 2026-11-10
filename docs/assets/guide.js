@@ -1,11 +1,14 @@
 'use strict';
 
-const starts = [5, 8, 11, 14, 16, 19, 22, 25, 28, 31, 34];
-const sectionStarts = [1, ...starts, 37];
-const extras = [[2, 'welcome'], [4, 'how'], [37, 'credits'], [38, 'farewell']];
+// The web chapters use the original page numbers so shared links stay valid.
+const chapterPages = [
+  [2], [5, 6, 7], [8, 9, 10], [11, 12, 13], [14, 15], [16, 17, 18], [19, 20, 21],
+  [22, 23, 24], [25, 26, 27], [28, 29, 30], [31, 32, 33], [34, 35, 36], [38]
+];
+const legacyPages = {1: '#portada', 3: '#indice', 4: '#indice', 37: '#pagina-38'};
 // Reserve space for photos so a link into a chapter stays aligned as images load.
 const photoSizes = {
-  1: [[893, 959]], 2: [[405, 304]], 5: [[460, 631], [365, 653]], 7: [[709, 307]],
+  2: [[405, 304]], 5: [[460, 631], [365, 653]], 7: [[709, 307]],
   8: [[695, 384], [655, 331]], 11: [[849, 328], [414, 292], [408, 292]], 13: [[712, 309]],
   14: [[416, 700], [400, 182], [400, 182], [400, 233]], 16: [[887, 377], [397, 353], [465, 353]],
   18: [[715, 307]], 19: [[807, 417], [807, 350]], 21: [[712, 307]],
@@ -13,7 +16,6 @@ const photoSizes = {
   25: [[829, 303], [382, 252], [201, 382], [203, 382]], 27: [[712, 309]],
   28: [[829, 349], [406, 284], [404, 284]], 30: [[712, 307]], 31: [[893, 713]], 34: [[817, 626]]
 };
-const totalPages = 38;
 const main = document.querySelector('main');
 const selector = document.querySelector('#language');
 const languages = Array.from(selector.options, option => option.value);
@@ -148,8 +150,7 @@ function link(href, className, value) {
 }
 function icon(name) {
   const paths = {
-    book: 'M12 5.5C9 3.5 5 3.5 2.5 4.5v14c3-1.2 6.5-1 9.5 1 3-2 6.5-2.2 9.5-1v-14C19 3.5 15 3.5 12 5.5Zm0 0v14',
-    down: 'M12 4v16m-6-6 6 6 6-6', right: 'M4 12h16m-6-6 6 6-6 6',
+    right: 'M4 12h16m-6-6 6 6-6 6',
     next: 'm9 5 7 7-7 7', previous: 'm15 5-7 7 7 7',
     index: 'M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01'
   };
@@ -176,66 +177,53 @@ function t(id, parameters = {}) {
 function pageData(page) {
   return dictionary.pages['p' + pad(page)];
 }
-function chapters(withPhotos) {
-  const list = element('ol', withPhotos ? 'chapter-list' : '');
-  starts.forEach((start, i) => {
+function chapters() {
+  const list = element('ol', 'chapter-list');
+  list.start = 0;
+  chapterPages.forEach(([start], number) => {
     const item = element('li');
-    const title = pageData(start).title;
-    const anchor = link(pageHref(start), withPhotos ? 'chapter-link' : '');
-    if (withPhotos) {
-      const details = element('span', 'chapter-detail');
-      details.append(element('small', '', t('chapter', {number: formatNumber.format(i + 1)})), element('strong', '', title));
-      anchor.append(image(photo(start), ''), details, icon('right'));
-    } else anchor.textContent = title;
+    const anchor = link(pageHref(start), 'chapter-link');
+    const details = element('span', 'chapter-detail');
+    details.append(element('small', '', t('chapter', {number: formatNumber.format(number)})),
+      element('strong', '', chapterTitle(start)));
+    if (photoSizes[start]) anchor.append(image(photo(start), ''));
+    anchor.append(details, icon('right'));
     item.append(anchor);
     list.append(item);
   });
   return list;
 }
-function otherPages() {
-  const links = element('div', 'slim-links');
-  for (const [page, id] of extras) links.append(link(pageHref(page), '', t(id)));
-  return links;
-}
-function home() {
+function home(calendarOptions) {
   const wrapper = element('div', 'wrap');
   const cover = element('section', 'cover');
-  const content = element('div');
-  const actions = element('div', 'cover-actions');
-  const open = link(pageHref(1), 'btn');
-  open.append(icon('book'), t('open'));
-  const index = link('#indice', 'text-link');
-  index.append(t('viewIndex'), icon('down'));
-  actions.append(open, index);
-  content.append(element('p', 'location', 'Maldonado, Uruguay'), element('h1', '', t('title')),
-    element('p', 'intro', t('subtitle')), actions);
+  const heading = element('header', 'cover-heading');
+  heading.append(element('p', 'location', 'Maldonado, Uruguay'), element('h1', '', t('title')));
   const figure = element('figure', 'hero-photo');
   figure.append(image('assets/images/puerto.webp', t('harbor'), false));
-  cover.append(content, figure);
+  cover.append(heading, element('p', 'intro', t('subtitle')), figure);
   const section = element('section', 'contents');
   section.id = 'indice';
   section.tabIndex = -1;
-  section.append(element('h2', '', t('contents')), chapters(true), otherPages());
+  section.append(element('h2', '', t('contents')), chapters());
   wrapper.append(cover, section);
-  return wrapper;
+  const fragment = document.createDocumentFragment();
+  fragment.append(AwenCalendar.nextEventRow(calendarOptions), wrapper);
+  return fragment;
 }
-function sectionIndex(page) {
-  return sectionStarts.filter(start => start <= page).length - 1;
+function chapterIndex(page) {
+  return chapterPages.findIndex(pages => pages.includes(page));
 }
-function sectionTitle(start) {
-  if (start === 1) return t('introduction');
-  if (start === 37) return t('closing');
+function chapterTitle(start) {
+  if (start === 2) return t('welcome');
+  if (start === 38) return t('farewell');
   return pageData(start).title;
 }
 function chapterTurn(start, previous) {
   const anchor = link(pageHref(start), 'chapter-turn');
   anchor.rel = previous ? 'prev' : 'next';
   const labels = element('span', 'chapter-destination');
-  const isChapter = starts.includes(start);
-  const label = previous
-    ? (isChapter ? 'previousChapter' : 'previousSection')
-    : (isChapter ? 'nextChapter' : 'nextSection');
-  labels.append(element('span', 'direction', t(label)), element('strong', '', sectionTitle(start)));
+  const label = previous ? 'previousChapter' : 'nextChapter';
+  labels.append(element('span', 'direction', t(label)), element('strong', '', chapterTitle(start)));
   if (previous) anchor.append(icon('previous'), labels);
   else anchor.append(labels, icon('next'));
   return anchor;
@@ -243,9 +231,9 @@ function chapterTurn(start, previous) {
 function chapterNav(index) {
   const nav = element('nav', 'chapter-nav');
   nav.setAttribute('aria-label', t('title'));
-  if (index > 0) nav.append(chapterTurn(sectionStarts[index - 1], true));
+  if (index > 0) nav.append(chapterTurn(chapterPages[index - 1][0], true));
   nav.append(tocLink());
-  if (index + 1 < sectionStarts.length) nav.append(chapterTurn(sectionStarts[index + 1], false));
+  if (index + 1 < chapterPages.length) nav.append(chapterTurn(chapterPages[index + 1][0], false));
   return nav;
 }
 function tocLink() {
@@ -253,10 +241,11 @@ function tocLink() {
   anchor.append(icon('index'), t('index'));
   return anchor;
 }
-function formattedPage(page, data, start) {
+function formattedPage(page, data, chapter) {
+  const start = chapterPages[chapter][0];
   const article = element('section', 'transcription');
-  if (page === start && starts.includes(start)) {
-    article.append(element('header', 'chapter-heading', t('chapter', {number: formatNumber.format(starts.indexOf(start) + 1)})));
+  if (page === start) {
+    article.append(element('header', 'chapter-heading', t('chapter', {number: formatNumber.format(chapter)})));
   }
   const showTitle = page === start || data.title !== pageData(start).title;
   if (showTitle) {
@@ -277,7 +266,6 @@ function formattedPage(page, data, start) {
     article.append(element('p', '', value));
     tipsAt(i+1);
   });
-  if (page === 3) article.append(chapters(false), otherPages());
   const urls = resources[page] || [];
   if (urls.length) {
     const list = element('ul', 'resources');
@@ -297,7 +285,7 @@ function appendIllustrations(article, page, data) {
   sizes.forEach(([width, height], i) => {
     const caption = data.captions[i];
     const fig = element('figure');
-    const img = image(page === 1 ? 'assets/images/puerto.webp' : photo(page, i+1), page === 1 ? t('harbor') : (caption || data.title));
+    const img = image(photo(page, i+1), caption || data.title);
     img.width = width;
     img.height = height;
     if (page === 34) {
@@ -312,17 +300,15 @@ function appendIllustrations(article, page, data) {
   for (const note of data.captions.slice(sizes.length)) article.append(element('p', 'editorial-note', note));
 }
 function reader(page) {
-  const index = sectionIndex(page);
-  const start = sectionStarts[index];
-  const end = sectionStarts[index + 1] || totalPages + 1;
+  const index = chapterIndex(page);
   const region = element('div', 'reader');
   const content = element('div', 'chapter-content');
-  for (let number = start; number < end; number++) {
+  for (const number of chapterPages[index]) {
     const data = pageData(number);
     const part = element('div', 'reader-part');
     part.id = 'pagina-' + number;
     part.tabIndex = -1;
-    part.append(formattedPage(number, data, start));
+    part.append(formattedPage(number, data, index));
     content.append(part);
   }
   region.append(chapterNav(index), content, chapterNav(index));
@@ -331,14 +317,18 @@ function reader(page) {
 function currentPage() {
   const match = /^#pagina-(\d{1,2})$/.exec(location.hash);
   const number = match && Number(match[1]);
-  return number >= 1 && number <= totalPages ? number : null;
+  return number in legacyPages || chapterIndex(number) >= 0 ? number : null;
 }
 function render(navigate = false) {
   if (!dictionary) return;
+  const page = currentPage();
+  if (legacyPages[page]) {
+    location.replace(legacyPages[page]);
+    return;
+  }
   AwenCalendar.unmount();
   const calendar = location.hash === '#calendario';
-  const page = currentPage();
-  const title = calendar ? t('calendar.title') : page ? sectionTitle(sectionStarts[sectionIndex(page)]) : t('title');
+  const title = calendar ? t('calendar.title') : page ? chapterTitle(chapterPages[chapterIndex(page)][0]) : t('title');
   document.title = title + ' · AWEN';
   document.documentElement.lang = language;
   document.querySelector('meta[name="description"]').content = t(calendar ? 'calendar.subtitle' : 'subtitle');
@@ -351,12 +341,13 @@ function render(navigate = false) {
   selector.setAttribute('aria-label', t('language'));
   languagePicker.sync();
   if (location.protocol === 'file:') syncLocalFolder();
-  main.replaceChildren(calendar ? AwenCalendar.render({language, t: (id, params) => t('calendar.' + id, params)}) : page ? reader(page) : home());
+  const calendarOptions = {language, t: (id, params) => t('calendar.' + id, params)};
+  main.replaceChildren(calendar ? AwenCalendar.render(calendarOptions) : page ? reader(page) : home(calendarOptions));
   if (location.hash === '#indice') {
     const index = document.querySelector('#indice');
     index.focus({preventScroll: true});
     index.scrollIntoView();
-  } else if (page && !sectionStarts.includes(page)) {
+  } else if (page && page !== chapterPages[chapterIndex(page)][0]) {
     const target = document.getElementById('pagina-' + page);
     if (navigate) target.focus({preventScroll: true});
     target.scrollIntoView();
@@ -401,7 +392,7 @@ async function selectLanguage(code, remember = false) {
   const serial = ++request;
   try {
     const [next, book] = await Promise.all([
-      AwenData.read('locales/' + code + '.json?v=6'), resources ? Promise.resolve({resources}) : AwenData.read('assets/book.json')
+      AwenData.read('locales/' + code + '.json?v=8'), resources ? Promise.resolve({resources}) : AwenData.read('assets/book.json')
     ]);
     if (serial !== request) return;
     dictionary = next;
@@ -438,10 +429,10 @@ document.addEventListener('keydown', event => {
   if (!page || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || event.target.closest('select,input,textarea,button')) return;
   const direction = event.key === 'ArrowLeft' ? -1 : event.key === 'ArrowRight' ? 1 : 0;
   if (!direction) return;
-  const target = sectionStarts[sectionIndex(page) + direction];
+  const target = chapterPages[chapterIndex(page) + direction];
   if (!target) return;
   event.preventDefault();
-  location.hash = pageHref(target);
+  location.hash = pageHref(target[0]);
 });
 let initial;
 try { initial = localStorage.getItem(key); } catch { /* First visit. */ }

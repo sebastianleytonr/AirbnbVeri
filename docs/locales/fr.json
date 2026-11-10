@@ -6,17 +6,11 @@
     "localFolderError": "Impossible de lire les données. Choisissez le dossier docs et vérifiez ses fichiers JSON.",
     "title": "Lieux à découvrir",
     "subtitle": "Une invitation à explorer Maldonado, à en profiter et à en tomber amoureux.",
-    "open": "Ouvrir le livre",
-    "viewIndex": "Voir le sommaire",
     "contents": "Sommaire",
     "index": "Sommaire",
     "chapter": "Chapitre {number}",
     "previousChapter": "Chapitre précédent",
     "nextChapter": "Chapitre suivant",
-    "previousSection": "Section précédente",
-    "nextSection": "Section suivante",
-    "introduction": "Introduction",
-    "closing": "Fin du guide",
     "language": "Langue",
     "skip": "Aller au contenu",
     "previous": "Page précédente",
@@ -26,8 +20,6 @@
     "original": "Voir l’original en espagnol",
     "harbor": "Port de Punta del Este",
     "welcome": "Bienvenue",
-    "how": "Comment utiliser ce guide",
-    "credits": "Sources et crédits",
     "farewell": "Au revoir",
     "error": "Impossible de charger le guide.",
     "retry": "Réessayer",
@@ -35,6 +27,10 @@
     "beaches": "Plages"
   },
   "calendar": {
+    "nextEvent": "Prochain événement",
+    "fullCalendar": "Voir le calendrier complet",
+    "noUpcoming": "Aucun événement à venir.",
+    "eventSummaryUnavailable": "Impossible de charger le prochain événement.",
     "title": "Calendrier des événements",
     "subtitle": "Trouvez des idées de sorties pour profiter de votre séjour.",
     "month": "Mois",
@@ -78,6 +74,7 @@
     "moreMany": "+{count} événements"
   },
   "chapters": [
+    "Bienvenue",
     "La mer et nos plages",
     "Culture, art et histoire",
     "Promenades, villages et boutiques",
@@ -88,7 +85,8 @@
     "Les domaines viticoles de Maldonado",
     "Maldonado au fil des occasions et des saisons",
     "Services et informations pratiques",
-    "Les coups de cœur d’AWEN"
+    "Les coups de cœur d’AWEN",
+    "Au revoir"
   ],
   "pages": {
     "p01": {
@@ -125,26 +123,6 @@
       "title": "Sommaire",
       "paragraphs": [],
       "headings": [],
-      "tips": [],
-      "captions": [],
-      "links": []
-    },
-    "p04": {
-      "title": "Comment utiliser ce guide",
-      "paragraphs": [
-        "Chaque chapitre s’ouvre sur une couverture créée pour AWEN. Vous y trouverez des sites à visiter, des spécialités, des activités sportives, des expériences à vivre et des renseignements pratiques.",
-        "Les horaires, tarifs, réservations et programmes peuvent varier. Les codes QR renvoient aux sources officielles. Consultez-les avant d’organiser votre visite.",
-        "Dans cette première édition, les codes QR mènent directement aux pages officielles. Les liens sont également cliquables dans le PDF. Pour pouvoir modifier la destination d’un code imprimé sans le réimprimer, il faudrait une redirection gérée par AWEN. Cette fonction n’est pas encore activée.",
-        "Les cartes et illustrations servent à vous orienter et ne remplacent ni la signalisation routière ni les cartes de navigation. Toute image qui ne représente pas fidèlement un lieu est signalée comme illustration.",
-        "Novembre 2026 · Guide préparé pour les hôtes d’AWEN à Maldonado, en Uruguay."
-      ],
-      "headings": [
-        "Laissez-vous inspirer par les images",
-        "Vérifiez ce qui peut changer",
-        "À propos des codes QR",
-        "Une précision",
-        "Édition"
-      ],
       "tips": [],
       "captions": [],
       "links": []
@@ -809,29 +787,6 @@
       ],
       "captions": [],
       "links": []
-    },
-    "p37": {
-      "title": "Sources et crédits",
-      "paragraphs": [
-        "Cette publication adapte la maquette éditoriale d’AWEN et les couvertures approuvées par Silvia et Danilo. Les liens suivants permettent de vérifier des données susceptibles de changer. Les photographies fournies par les hôtes doivent faire l’objet d’une autorisation d’utilisation avant tout tirage public."
-      ],
-      "tips": [],
-      "headings": [
-        ""
-      ],
-      "captions": [
-        "Ce guide ne remplace ni les sources officielles, ni les services d’urgence, ni les consignes de sécurité."
-      ],
-      "links": [
-        "Intendencia de Maldonado · Tourisme",
-        "Intendencia de Maldonado · Agenda",
-        "Ministerio de Turismo · Punta del Este",
-        "Museo Taller Casapueblo",
-        "MACA · Museo de Arte Contemporáneo Atchugarry",
-        "Museo Arboretum Lussich",
-        "Bodega Cerro del Toro",
-        "Urgences · Antel"
-      ]
     },
     "p38": {
       "title": "Merci d’avoir choisi AWEN !",

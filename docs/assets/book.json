@@ -189,64 +189,6 @@
         "width": 365,
         "height": 125
       }
-    ],
-    "37": [
-      {
-        "url": "https://www.maldonado.gub.uy/descubre-maldonado/informacion-turista",
-        "x": 73,
-        "y": 345,
-        "width": 645,
-        "height": 48
-      },
-      {
-        "url": "https://www.maldonado.gub.uy/actividades",
-        "x": 73,
-        "y": 399,
-        "width": 645,
-        "height": 48
-      },
-      {
-        "url": "https://uruguaynatural.com/es/places/punta-del-este/",
-        "x": 73,
-        "y": 453,
-        "width": 645,
-        "height": 48
-      },
-      {
-        "url": "https://casapueblo.com.uy/",
-        "x": 73,
-        "y": 507,
-        "width": 645,
-        "height": 48
-      },
-      {
-        "url": "https://macamuseo.org/",
-        "x": 73,
-        "y": 561,
-        "width": 645,
-        "height": 48
-      },
-      {
-        "url": "https://www.arboretumlussich.uy/",
-        "x": 73,
-        "y": 615,
-        "width": 645,
-        "height": 48
-      },
-      {
-        "url": "https://www.cerrodeltoro.uy/",
-        "x": 73,
-        "y": 669,
-        "width": 645,
-        "height": 48
-      },
-      {
-        "url": "https://antel.com.uy/personas/servicios/telefonia-fija/numeros-de-consulta",
-        "x": 73,
-        "y": 723,
-        "width": 645,
-        "height": 48
-      }
     ]
   }
 }
