@@ -17,6 +17,113 @@ let dictionary;
 let resources;
 let formatNumber;
 let request = 0;
+const languagePicker = createLanguagePicker();
+
+function createLanguagePicker() {
+  const container = selector.closest('.language');
+  const label = element('span', 'sr-only');
+  label.id = 'language-label';
+  label.textContent = selector.getAttribute('aria-label');
+  const current = element('span');
+  current.id = 'language-current';
+  const trigger = element('button', 'language-trigger');
+  trigger.type = 'button';
+  trigger.setAttribute('aria-haspopup', 'listbox');
+  trigger.setAttribute('aria-expanded', 'false');
+  trigger.setAttribute('aria-controls', 'language-options');
+  trigger.setAttribute('aria-labelledby', label.id + ' ' + current.id);
+  const list = element('div', 'language-options');
+  list.id = 'language-options';
+  list.hidden = true;
+  list.setAttribute('role', 'listbox');
+  list.setAttribute('aria-labelledby', label.id);
+  function flag(code) {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 30 20');
+    svg.setAttribute('class', 'language-flag');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('focusable', 'false');
+    const use = document.createElementNS(svg.namespaceURI, 'use');
+    use.setAttribute('href', 'assets/flags.svg#' + code);
+    svg.append(use);
+    return svg;
+  }
+  function close(restoreFocus = false) {
+    list.hidden = true;
+    trigger.setAttribute('aria-expanded', 'false');
+    if (restoreFocus) trigger.focus({preventScroll: true});
+  }
+  const options = Array.from(selector.options, source => {
+    const option = element('button', 'language-option');
+    option.type = 'button';
+    option.lang = source.lang;
+    option.tabIndex = -1;
+    option.dataset.code = source.value;
+    option.setAttribute('role', 'option');
+    option.append(flag(source.value), element('span', '', source.textContent));
+    option.addEventListener('click', () => {
+      selector.value = source.value;
+      close(true);
+      selector.dispatchEvent(new Event('change'));
+    });
+    list.append(option);
+    return option;
+  });
+  function open(index = languages.indexOf(selector.value)) {
+    list.hidden = false;
+    trigger.setAttribute('aria-expanded', 'true');
+    options[Math.max(0, index)].focus({preventScroll: true});
+    options[Math.max(0, index)].scrollIntoView({block: 'nearest'});
+  }
+  trigger.addEventListener('click', () => list.hidden ? open() : close());
+  trigger.addEventListener('keydown', event => {
+    if (!['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    open(event.key === 'Home' ? 0 : event.key === 'End' ? options.length - 1 : undefined);
+  });
+  let search = '';
+  let searchedAt = 0;
+  list.addEventListener('keydown', event => {
+    const index = options.indexOf(document.activeElement);
+    let next;
+    if (event.key === 'ArrowDown') next = (index + 1) % options.length;
+    if (event.key === 'ArrowUp') next = (index + options.length - 1) % options.length;
+    if (event.key === 'Home') next = 0;
+    if (event.key === 'End') next = options.length - 1;
+    if (next !== undefined) {
+      event.preventDefault();
+      options[next].focus();
+    } else if (event.key === 'Escape' || event.key === 'Tab') {
+      if (event.key === 'Escape') event.preventDefault();
+      close(true);
+    } else if (event.key.length === 1 && event.key !== ' ' && !event.ctrlKey && !event.metaKey && !event.altKey) {
+      event.preventDefault();
+      const now = Date.now();
+      search = (now - searchedAt < 700 ? search : '') + event.key.toLocaleLowerCase();
+      searchedAt = now;
+      const match = options.find(option => option.textContent.toLocaleLowerCase().startsWith(search));
+      if (match) match.focus();
+    }
+  });
+  document.addEventListener('pointerdown', event => {
+    if (!container.contains(event.target)) close();
+  });
+  container.addEventListener('focusout', event => {
+    if (!container.contains(event.relatedTarget)) close();
+  });
+  function sync() {
+    const source = selector.selectedOptions[0];
+    label.textContent = selector.getAttribute('aria-label');
+    current.textContent = source.textContent;
+    current.lang = source.lang;
+    trigger.replaceChildren(flag(source.value), current, element('span', 'chevron'));
+    options.forEach(option => option.setAttribute('aria-selected', String(option.dataset.code === source.value)));
+  }
+  selector.closest('label').hidden = true;
+  container.append(label, trigger, list);
+  sync();
+  return {sync};
+}
 
 function element(tag, className, value) {
   const node = document.createElement(tag);
@@ -241,6 +348,7 @@ function render(navigate = false) {
   document.querySelector('#tab').textContent = t('title');
   document.querySelector('#skip').textContent = t('skip');
   selector.setAttribute('aria-label', t('language'));
+  languagePicker.sync();
   main.replaceChildren(page ? reader(page) : home());
   if (location.hash === '#indice') {
     const index = document.querySelector('#indice');
@@ -282,6 +390,7 @@ async function selectLanguage(code, remember = false) {
     error.append(element('p', '', dictionary ? t('error') : 'No se pudo cargar la guía.'), retry);
     main.replaceChildren(error);
     selector.value = language;
+    languagePicker.sync();
   }
 }
 selector.addEventListener('change', () => selectLanguage(selector.value, true));

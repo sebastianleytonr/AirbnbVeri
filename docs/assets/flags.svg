@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="es" viewBox="0 0 30 20">
+    <path fill="#AA151B" d="M0 0h30v20H0z"/>
+    <path fill="#F1BF00" d="M0 5h30v10H0z"/>
+    <path fill="#AA151B" d="M7 8h5v4c0 2-5 2-5 0z"/>
+    <path fill="#F1BF00" d="M7 7h5v1H7zM8 9h1v2H8zm2 2h1v2h-1z"/>
+    <path stroke="#F8F4ED" stroke-width=".7" d="M6 9v4m7-4v4M9.5 8v5"/>
+  </symbol>
+  <symbol id="en" viewBox="0 0 30 20">
+    <path fill="#012169" d="M0 0h30v20H0z"/>
+    <path stroke="#FFF" stroke-width="4" d="m0 0 30 20M30 0 0 20"/>
+    <path fill="#C8102E" d="m0 0 12 8H9L0 2zm30 0L18 8h-3L27 0zM0 20l12-8h3L3 20zm30 0-12-8h3l9 6z"/>
+    <path stroke="#FFF" stroke-width="6" d="M15 0v20M0 10h30"/>
+    <path stroke="#C8102E" stroke-width="3.5" d="M15 0v20M0 10h30"/>
+  </symbol>
+  <symbol id="pt-BR" viewBox="0 0 30 20">
+    <path fill="#009739" d="M0 0h30v20H0z"/>
+    <path fill="#FFDF00" d="m15 2 13 8-13 8L2 10z"/>
+    <circle fill="#012169" cx="15" cy="10" r="5"/>
+    <path fill="#FFF" d="M10 8.5c3.5-.6 6.8.4 9.6 2.5l-.5 1.1c-2.9-2.2-5.6-3-9.1-2.4z"/>
+    <path fill="#FFF" d="M13 11h.7v.7H13zm2 1.5h.7v.7H15zm2-1h.7v.7H17zm-3.5 2h.6v.6h-.6z"/>
+  </symbol>
+  <symbol id="fr" viewBox="0 0 30 20">
+    <path fill="#FFF" d="M0 0h30v20H0z"/>
+    <path fill="#002654" d="M0 0h10v20H0z"/>
+    <path fill="#ED2939" d="M20 0h10v20H20z"/>
+  </symbol>
+  <symbol id="it" viewBox="0 0 30 20">
+    <path fill="#FFF" d="M0 0h30v20H0z"/>
+    <path fill="#009246" d="M0 0h10v20H0z"/>
+    <path fill="#CE2B37" d="M20 0h10v20H20z"/>
+  </symbol>
+  <symbol id="de" viewBox="0 0 30 20">
+    <path d="M0 0h30v20H0z"/>
+    <path fill="#D00" d="M0 6.667h30V20H0z"/>
+    <path fill="#FFCE00" d="M0 13.333h30V20H0z"/>
+  </symbol>
+  <symbol id="pl" viewBox="0 0 30 20">
+    <path fill="#FFF" d="M0 0h30v20H0z"/>
+    <path fill="#DC143C" d="M0 10h30v10H0z"/>
+  </symbol>
+  <symbol id="ru" viewBox="0 0 30 20">
+    <path fill="#FFF" d="M0 0h30v20H0z"/>
+    <path fill="#0039A6" d="M0 6.667h30V20H0z"/>
+    <path fill="#D52B1E" d="M0 13.333h30V20H0z"/>
+  </symbol>
+</svg>
