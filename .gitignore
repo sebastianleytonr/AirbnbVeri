@@ -1,0 +1,51 @@
+# Default deny: only explicitly allowed public files can be added normally.
+*
+!/.gitignore
+!/AGENTS.md
+!/README.md
+
+# GitHub Pages public source. Keep local tools outside this directory.
+!/docs/
+!/docs/**/
+!/docs/**/*.html
+!/docs/**/*.css
+!/docs/**/*.js
+!/docs/**/*.json
+!/docs/**/*.svg
+!/docs/**/*.png
+!/docs/**/*.jpg
+!/docs/**/*.jpeg
+!/docs/**/*.webp
+!/docs/**/*.avif
+!/docs/**/*.gif
+!/docs/**/*.ico
+!/docs/**/*.woff
+!/docs/**/*.woff2
+!/docs/.nojekyll
+!/docs/CNAME
+!/docs/robots.txt
+!/docs/sitemap.xml
+
+# Never publish hidden files, dependencies, build outputs, or local tools.
+/docs/**/.*
+!/docs/.nojekyll
+/docs/**/node_modules/
+/docs/**/build/
+/docs/**/dist/
+/docs/**/private/
+/docs/**/tools/
+/docs/**/*admin*
+/docs/**/*Admin*
+/docs/**/*publish*
+/docs/**/*Publish*
+/docs/**/*publicar*
+/docs/**/*deploy*
+/docs/**/*Deploy*
+/docs/**/*push*
+/docs/**/*Push*
+/docs/**/*credential*
+/docs/**/*secret*
+
+# private/, the administrator, Python files, executable packages, publishing
+# scripts, credentials, IDE files and virtual environments stay ignored by
+# the default-deny rule, even when their filenames change.
