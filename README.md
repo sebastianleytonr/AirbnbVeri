@@ -2,6 +2,16 @@
 
 Sitio estático de un alojamiento, preparado para publicarse en GitHub Pages. La interfaz tendrá ocho idiomas; las reglas de traducción están en `AGENTS.md`.
 
+## Diseño responsivo y prioridad en celulares
+
+Es probable que la mayoría de las visitas al sitio sean desde un celular. Por eso, todo el sitio y las interfaces que se creen, incluido el administrador local, deben ser responsivos, con especial atención a funcionar bien en celulares.
+
+- Diseñar primero para pantallas pequeñas y adaptar la distribución a tabletas y computadoras.
+- Mantener textos legibles, imágenes y contenidos adaptables, sin desbordamientos ni desplazamiento horizontal de la página.
+- Ofrecer navegación, botones y formularios cómodos de usar con el dedo; ninguna función debe depender únicamente de pasar el cursor.
+- Optimizar las imágenes y los recursos para que el sitio cargue con agilidad en conexiones móviles.
+- Antes de dar por terminada una interfaz, comprobar su funcionamiento en distintos tamaños de pantalla, en orientación vertical y horizontal, y en los ocho idiomas, incluidos los textos más largos.
+
 ## Separación entre contenido público y herramientas locales
 
 | Ubicación | Contenido | ¿Se publica en este repositorio? |
@@ -18,6 +28,6 @@ Los controles locales dependen de la configuración de cada computadora: `core.h
 
 ## GitHub Pages
 
-La carpeta pública elegida es `docs/`, compatible con la publicación desde una rama de GitHub Pages. Cuando exista la primera página, la fuente de publicación será la rama principal y la carpeta `/docs`. Las herramientas locales no se deben adjuntar a releases, subir como artefactos públicos ni incluir en la web.
+La carpeta pública es `docs/`. Si GitHub Pages publica desde `main` y `/(root)`, la guía se abre en `/AirbnbVeri/docs/`. Si la fuente es `/docs`, se abre en `/AirbnbVeri/`. Las herramientas locales no se deben adjuntar a releases, subir como artefactos públicos ni incluir en la web.
 
-El repositorio todavía no contiene las páginas del alojamiento ni el administrador.
+Para revisar la guía localmente en Windows, ejecutá `python -m http.server 8000 --bind 127.0.0.1 --directory docs` desde la raíz del proyecto y abrí [la portada](http://127.0.0.1:8000/). El índice permite abrir los once capítulos. Cada página tiene un enlace propio, por ejemplo `#pagina-5`.

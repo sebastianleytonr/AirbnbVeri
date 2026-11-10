@@ -1,0 +1,801 @@
+{
+  "ui": {
+    "title": "Miejsca do odkrycia",
+    "subtitle": "Zaproszenie do odkrywania Maldonado, cieszenia się nim i zakochania w tym miejscu.",
+    "open": "Otwórz książkę",
+    "viewIndex": "Zobacz spis treści",
+    "contents": "Spis treści",
+    "index": "Spis treści",
+    "chapter": "Rozdział {number}",
+    "language": "Język",
+    "skip": "Przejdź do treści",
+    "previous": "Poprzednia strona",
+    "next": "Następna strona",
+    "page": "Strona {number} z {total}",
+    "read": "Czytaj jako tekst",
+    "original": "Zobacz hiszpański oryginał",
+    "harbor": "Port w Punta del Este",
+    "welcome": "Powitanie",
+    "how": "Jak korzystać z przewodnika",
+    "credits": "Źródła i autorzy",
+    "farewell": "Pożegnanie",
+    "error": "Nie udało się wczytać przewodnika.",
+    "retry": "Spróbuj ponownie",
+    "tip": "Wskazówka od AWEN"
+  },
+  "chapters": [
+    "Morze i nasze plaże",
+    "Kultura, sztuka i historia",
+    "Spacery, miasteczka i zakupy",
+    "Smaki Maldonado",
+    "Przyroda i przygoda",
+    "Odpoczynek i dobre samopoczucie",
+    "Sport i wielkie wydarzenia",
+    "Winnice Maldonado",
+    "Maldonado na każdą okazję i porę roku",
+    "Usługi i przydatne informacje",
+    "Ulubione miejsca AWEN"
+  ],
+  "pages": {
+    "p01": {
+      "title": "Miejsca warte odkrycia",
+      "paragraphs": [
+        "Zaproszenie do odkrywania Maldonado, cieszenia się nim i pokochania tego miejsca."
+      ],
+      "headings": [
+        ""
+      ],
+      "tips": [],
+      "captions": [],
+      "links": []
+    },
+    "p02": {
+      "title": "Witamy w AWEN",
+      "paragraphs": [
+        "Cieszymy się, że możemy gościć cię w naszym domu. Mamy nadzieję, że pobyt w Maldonado sprawi ci przyjemność. Przygotowaliśmy ten przewodnik z myślą o tym, by można było we własnym tempie poznawać plaże, krajobrazy, kulturę, smaki i atrakcje regionu.",
+        "AWEN łączy dla nas rodzinę, przyrodę i radość życia. To z nich na co dzień czerpiemy inspirację.",
+        "Nie musisz zobaczyć wszystkiego naraz. Wybierz to, co cię pociąga, sprawdź aktualne informacje przed wyjściem i pozwól Maldonado cię zaskoczyć."
+      ],
+      "headings": [
+        "",
+        "",
+        ""
+      ],
+      "tips": [],
+      "captions": [
+        "AWEN · Rodzina, przyroda i radość życia"
+      ],
+      "links": []
+    },
+    "p03": {
+      "title": "Spis rozdziałów",
+      "paragraphs": [],
+      "headings": [],
+      "tips": [],
+      "captions": [],
+      "links": []
+    },
+    "p04": {
+      "title": "Jak korzystać z przewodnika",
+      "paragraphs": [
+        "Każdy rozdział otwiera okładka zaprojektowana dla AWEN. Znajdziesz tu miejsca do zwiedzania, lokalne smaki, propozycje sportowe, ciekawe doświadczenia i praktyczne informacje.",
+        "Godziny otwarcia, ceny, zasady rezerwacji i terminy wydarzeń mogą się zmieniać. Kody QR prowadzą do oficjalnych źródeł. Zajrzyj tam przed zaplanowaniem wizyty.",
+        "W pierwszym wydaniu kody QR prowadzą bezpośrednio do oficjalnych stron. Linki można również kliknąć w pliku PDF. Aby zmieniać cel wydrukowanego kodu bez ponownego druku, potrzebne byłoby przekierowanie zarządzane przez AWEN. Ta funkcja nie jest jeszcze aktywna.",
+        "Mapy i ilustracje służą orientacji i nie zastępują znaków drogowych ani map nawigacyjnych. Obrazy, które nie są dokumentalnym zapisem danego miejsca, oznaczono jako ilustracje.",
+        "Listopad 2026 · Przewodnik dla gości AWEN w Maldonado w Urugwaju."
+      ],
+      "headings": [
+        "Poszukaj inspiracji na zdjęciach",
+        "Sprawdź, co mogło się zmienić",
+        "O kodach QR",
+        "Ważna uwaga",
+        "Wydanie"
+      ],
+      "tips": [],
+      "captions": [],
+      "links": []
+    },
+    "p05": {
+      "title": "Morze i nasze plaże",
+      "paragraphs": [
+        "Dwa charakterystyczne krajobrazy i dwa sposoby na wypoczynek nad morzem."
+      ],
+      "headings": [
+        ""
+      ],
+      "tips": [],
+      "captions": [
+        "Playa Mansa",
+        "Playa Brava"
+      ],
+      "links": []
+    },
+    "p06": {
+      "title": "Różnorodne wybrzeże z plażami na każdą okazję.",
+      "paragraphs": [
+        "Departament Maldonado ma długie, zróżnicowane wybrzeże. Są tu plaże dla rodzin, spokojne zakątki, miejsca do surfowania, porty oraz krajobrazy, w których morze spotyka się ze wzgórzami i lagunami.",
+        "W Punta del Este Playa Mansa kusi zwykle spokojniejszą wodą i zachodami słońca nad zatoką. Playa Brava otwiera się na ocean. Na półwyspie port i jego okolice to nieodłączna część spaceru.",
+        "Na zachodzie uwagę przyciągają Solanas i Portezuelo z zatoką i szerokimi piaszczystymi plażami. W Piriápolis, Punta Negra, Playa Hermosa, San Francisco i Punta Colorada morze sąsiaduje ze wzgórzami. Dalej na wschód leżą La Barra, Montoya, Manantiales, José Ignacio i otwarte przestrzenie Laguna Garzón.",
+        "Każda plaża ma własny charakter. Niektóre są idealne na rodzinny wypad, inne przyciągają amatorów fal, spacerów, wędkowania lub po prostu wpatrywania się w horyzont. Warunki mogą się bardzo zmieniać zależnie od wiatru i stanu morza.",
+        "Port w Punta del Este to jedno z tradycyjnych miejsc spacerowych na półwyspie. Są tu łodzie, rybacy, uchatki i tarasy nad wodą. Z latarni i punktów widokowych można spojrzeć na wybrzeże z innej perspektywy.",
+        "Wędkarze wybierają różne części portu w Punta del Este, pomost przy Parada 3, Las Mesitas za portem, Zona Joven oraz mały pomost koło Puentes Gemelos. Na wybrzeżu wymienia się Piedras del Chileno, pas przy Parada 28, Pozo del Tiburón, Las Grutas i Punta Ballena. La Gorgorita, niedaleko ujścia strumienia Maldonado, to kolejne znane miejsce, którego nie należy mylić z Las Mesitas.",
+        "Przed łowieniem sprawdź, czy jest tu dozwolone, jakie są warunki dostępu i ograniczenia sezonowe oraz gdzie znajdują się kąpieliska i szlaki żeglugowe. W niektórych miejscach może być potrzebne zezwolenie."
+      ],
+      "headings": [
+        "Od Solís po Laguna Garzón",
+        "",
+        "",
+        "Plaże i zakątki warte odkrycia",
+        "Port, latarnie morskie i spacery nad wodą",
+        "Wędkarstwo rekreacyjne",
+        ""
+      ],
+      "tips": [],
+      "captions": [],
+      "links": []
+    },
+    "p07": {
+      "title": "Bezpieczny wypoczynek nad morzem",
+      "paragraphs": [
+        "Stosuj się do flag i poleceń ratowników. Sprawdź wiatr i stan morza przed wyborem plaży. Przy silnych falach unikaj skał i dbaj o otoczenie, zabierając śmieci ze sobą.",
+        "Zeskanuj kody lub otwórz linki w wersji cyfrowej."
+      ],
+      "headings": [
+        "",
+        "Sprawdź przed wyjściem"
+      ],
+      "tips": [
+        "Przy wschodnich wiatrach zwykle wybieramy Playa Mansa. Przy zachodnich lepsze warunki może oferować Playa Brava. Każdy dzień jest jednak inny. Kieruj się wiatrem, falami i flagami na plaży."
+      ],
+      "captions": [
+        "Zakątek do odkrywania we własnym tempie."
+      ],
+      "links": [
+        "Plaże i usługi sezonowe",
+        "Punta del Este · Oficjalna informacja turystyczna"
+      ],
+      "tipAt": [
+        1
+      ]
+    },
+    "p08": {
+      "title": "Kultura, sztuka i historia",
+      "paragraphs": [
+        "Muzea, architektura i przejawy kultury, które kształtują tożsamość Maldonado."
+      ],
+      "headings": [
+        ""
+      ],
+      "tips": [],
+      "captions": [
+        "Casapueblo",
+        "MACA"
+      ],
+      "links": []
+    },
+    "p09": {
+      "title": "Muzea, architektura, artyści i opowieści, które nas łączą.",
+      "paragraphs": [
+        "Na klifach Punta Ballena wznosi się Casapueblo, jedno z najbardziej rozpoznawalnych dzieł urugwajskiego artysty Carlosa Páeza Vilaró. Biała budowla o organicznych kształtach i niezwykłej architekturze zdaje się stapiać z krajobrazem i morzem. Wewnątrz mieści się Museo Taller z dziełami sztuki, obrazami, rzeźbami i pamiątkami z życia twórcy.",
+        "O zachodzie słońca odbywa się tradycyjna Ceremonia del Sol, której towarzyszy Poema al Sol. Jeśli chcesz wziąć w niej udział, przyjdź wcześniej i sprawdź godziny oraz warunki zwiedzania.",
+        "W Manantiales MACA łączy sztukę współczesną z przyrodą w niezwykłej scenerii. Rzeźby, park i spokój tego miejsca skłaniają do niespiesznego spaceru. Wstęp do parku i muzeum jest zwykle bezpłatny. Warto sprawdzić warunki i wydarzenia specjalne.",
+        "Do miejsc związanych z kulturą należą Museo Ralli, Museo Mazzoni, Museo del Mar, Museo Colección Nicolás García Uriburu, Museo Vivo del Títere i Museo San Fernando. Każde inaczej ukazuje sztukę, historię i miejscową tożsamość.",
+        "Torre del Vigía, Cuartel de Dragones, Azotea de Haedo, Castillo de Piria, Castillo Pittamiglio, Catedral de San Fernando i Iglesia Nuestra Señora de la Candelaria to część dziedzictwa, które warto poznać."
+      ],
+      "headings": [
+        "Casapueblo",
+        "",
+        "MACA – Museo de Arte Contemporáneo Atchugarry",
+        "Muzea warte odwiedzenia",
+        "Historia i dziedzictwo"
+      ],
+      "tips": [
+        "Nie spiesz się w parku. Usiądź na trawie, przyjrzyj się rzeźbom, poobserwuj ptaki i naciesz się ciszą. To piękne doświadczenie dla całej rodziny."
+      ],
+      "captions": [],
+      "links": [],
+      "tipAt": [
+        3
+      ]
+    },
+    "p10": {
+      "title": "La Musa Perfecta",
+      "paragraphs": [
+        "Poznaj Punta del Este poprzez opowieści, postacie, muzykę i poezję. Przed wizytą sprawdź, czy trasa jest dostępna, a także terminy, czas trwania i zasady rezerwacji.",
+        "Charles Darwin odwiedził Maldonado w 1833 roku. W miejscowej historii zachowały się wzmianki o jego pobycie i miejscach związanych z podróżą. Niektóre placówki kulturalne w mieście przypominają ten epizod. Sprawdź informacje o zwiedzaniu i wystawach.",
+        "Zeskanuj kody lub otwórz linki w wersji cyfrowej."
+      ],
+      "headings": [
+        "",
+        "Darwin w Maldonado",
+        "Sprawdź przed wyjściem"
+      ],
+      "tips": [],
+      "captions": [],
+      "links": [
+        "Casapueblo · Zwiedzanie",
+        "MACA · Zwiedzanie",
+        "MACA · Kalendarz kulturalny"
+      ]
+    },
+    "p11": {
+      "title": "Spacery, miasteczka i zakupy",
+      "paragraphs": [
+        "Urokliwe miejscowości, popularne trasy spacerowe i zakątki do niespiesznego zwiedzania."
+      ],
+      "headings": [
+        ""
+      ],
+      "tips": [],
+      "captions": [
+        "Avenida Gorlero",
+        "Parque El Jagüel",
+        "Most nad Laguna Garzón"
+      ],
+      "links": []
+    },
+    "p12": {
+      "title": "Urokliwe miasteczka i spacery bez pośpiechu.",
+      "paragraphs": [
+        "Piriápolis łączy nadmorską promenadę, port, wzgórza i zabytkową architekturę. W La Barra i Manantiales znajdziesz galerie, sklepy, kawiarnie i swobodną atmosferę. José Ignacio zachowuje charakter nadmorskiej wioski z latarnią, plażami i cichymi ulicami.",
+        "W głębi lądu Pueblo Edén, Garzón i Aiguá zapraszają do poznania wiejskich krajobrazów, kuchni i tradycji. Nueva Carrara, Solís i Gregorio Aznárez dopełniają tego innego obrazu departamentu.",
+        "Spacer aleją Juan Gorlero należy do klasycznych atrakcji Punta del Este. To główna ulica handlowa półwyspu, przy której mieszczą się sklepy, galerie, kawiarnie, restauracje, lodziarnie i najróżniejsze punkty usługowe.",
+        "W wielu sklepach kupisz pamiątki z Punta del Este i Urugwaju, w tym rękodzieło, dekoracje, ubrania, dodatki, produkty regionalne i drobne upominki do zabrania do domu.",
+        "Okolice ratusza w Punta del Este zajmują szczególne miejsce w życiu miasta. Przez cały rok, zwłaszcza w sezonie turystycznym, odbywają się tu i w sąsiedztwie imprezy kulturalne, wystawy, spotkania, targi i inne wydarzenia otwarte dla publiczności.",
+        "Gorlero najlepiej poznawać pieszo. Można oglądać wystawy sklepowe, odkrywać małe sklepy, wypić kawę i poczuć rytm miasta.",
+        "Na jarmarkach rękodzieła i targach można znaleźć wyjątkowe wyroby, lokalne produkty i pamiątki. W Piriápolis Paseo de La Pasiva i jego jarmark rzemieślniczy są tradycyjnym celem spacerów. Oferta i dni handlowe zależą od pory roku."
+      ],
+      "headings": [
+        "Miasta i miejscowości",
+        "",
+        "Avenida Gorlero – Serce półwyspu",
+        "",
+        "",
+        "",
+        "Jarmarki i targi"
+      ],
+      "tips": [
+        "Zarezerwuj czas na Gorlero. Zajrzyj do galerii i poszukaj szczególnej pamiątki z wizyty w Punta del Este. W sezonie sprawdź także miejski kalendarz zajęć i wydarzeń."
+      ],
+      "captions": [],
+      "links": [],
+      "tipAt": [
+        6
+      ]
+    },
+    "p13": {
+      "title": "Rodzinne wycieczki",
+      "paragraphs": [
+        "Parque El Jagüel, Pueblo Gaucho i inne tereny rekreacyjne oferują rodzinom z dziećmi wspólny wypoczynek na świeżym powietrzu. Sprawdź wcześniej godziny, atrakcje i zasady wstępu.",
+        "Okrągły most nad Laguna Garzón jest jednym z najbardziej rozpoznawalnych widoków wschodniego wybrzeża. Jego kształt zachęca do zwolnienia, przyjrzenia się lagunie i podziwiania krajobrazu łączącego Maldonado z Rocha.",
+        "Zeskanuj kody lub otwórz linki w wersji cyfrowej."
+      ],
+      "headings": [
+        "",
+        "Okrągły most nad Laguna Garzón",
+        "Sprawdź przed wyjściem"
+      ],
+      "tips": [],
+      "captions": [
+        "Zakątek do odkrywania we własnym tempie."
+      ],
+      "links": [
+        "Spacery w Punta del Este",
+        "Parki i spacery"
+      ]
+    },
+    "p14": {
+      "title": "Smaki Maldonado",
+      "paragraphs": [
+        "Kraina morza, wsi i smaków wartych odkrycia."
+      ],
+      "headings": [
+        ""
+      ],
+      "tips": [],
+      "captions": [
+        "Wyroby rzemieślnicze",
+        "Smaki wsi",
+        "Chivito al plato",
+        "Ciasto Ramón Novarro"
+      ],
+      "links": []
+    },
+    "p15": {
+      "title": "Kraina morza, wsi i smaków, którymi warto się dzielić.",
+      "paragraphs": [
+        "Kuchnia Maldonado czerpie z oceanu i pól. Ryby, owoce morza, mięso i sezonowe warzywa pojawiają się w przepisach łączących tradycję ze współczesnymi inspiracjami.",
+        "Oliwy, sery, miody, przetwory i inne wyroby rzemieślnicze pozwalają poznać pracę lokalnych producentów. Na jarmarkach i targach można ich spróbować i zabrać do domu coś smacznego na pamiątkę.",
+        "Cordero Esteño to jagnięcina należąca do najbardziej charakterystycznych produktów regionu. Jej obecność w menu i ofercie gastronomicznej zależy od sezonu.",
+        "Przerwa na kawę, wspólny deser lub spróbowanie ręcznie robionego przysmaku to także część podróży. W miasteczkach i na trasach spacerowych znajdziesz miejsca, w których możesz się zatrzymać we własnym tempie.",
+        "AWEN udostępnia gościom coroczny przewodnik po restauracjach opracowany przez Corporación Gastronómica. Aktualnych propozycji szukaj też w Mapa de Sabores i wśród inicjatyw związanych z Pacto Oceánico del Este.",
+        "Zeskanuj kody lub otwórz linki w wersji cyfrowej."
+      ],
+      "headings": [
+        "Z morza i ze wsi na stół",
+        "Produkty regionalne",
+        "Cordero Esteño i miejscowa kuchnia",
+        "Kawa, wypieki i drobne przyjemności",
+        "Przewodnik ułatwiający wybór",
+        "Sprawdź przed wyjściem"
+      ],
+      "tips": [],
+      "captions": [],
+      "links": [
+        "Informacja turystyczna Maldonado",
+        "Kalendarz wydarzeń"
+      ]
+    },
+    "p16": {
+      "title": "Przyroda i przygoda",
+      "paragraphs": [
+        "Krajobrazy, sport i atrakcje pod gołym niebem pozwalają poznać inne oblicze Maldonado."
+      ],
+      "headings": [
+        ""
+      ],
+      "tips": [],
+      "captions": [
+        "Surfing i sporty wodne",
+        "Kamieniołomy i naturalne krajobrazy",
+        "Parki i wypoczynek na świeżym powietrzu"
+      ],
+      "links": []
+    },
+    "p17": {
+      "title": "Wzgórza, laguny, lasy i aktywny wypoczynek.",
+      "paragraphs": [
+        "Sierra de las Ánimas, Cerro Pan de Azúcar i Cerro del Toro oferują pagórkowate krajobrazy, szlaki i rozległe widoki. Przed wyprawą do Pozos Azules i innych przyrodniczych zakątków sprawdź dostęp, warunki i możliwość zwiedzania z przewodnikiem.",
+        "Laguna del Sauce, Laguna Garzón i Laguna del Diario sprzyjają obserwacji ptaków, podziwianiu krajobrazów i rekreacji na świeżym powietrzu. Szanuj obszary chronione i przestrzegaj zasad dostępu.",
+        "Przyrodę można poznawać w Arboretum Lussich, Eco Parque La Alameda, Estación de Cría y Fauna Autóctona, Parque El Placer i Parque Medina. Arboretum Lussich opisano również w rozdziale o odpoczynku i dobrym samopoczuciu.",
+        "Zależnie od pory roku i warunków można tu wędrować, jeździć konno, pływać kajakiem, kanadyjką lub na desce SUP, uprawiać surfing i kitesurfing, jeździć na rowerze, łowić ryby i obserwować ptaki. Przy niektórych aktywnościach warto korzystać z usług wyspecjalizowanych organizatorów.",
+        "Grutas de Salamanca i Salto del Penitente w departamencie Lavalleja mogą być częścią dłuższej wycieczki po regionie. Pamiętaj, że leżą poza Maldonado.",
+        "Potwierdź u organizatora, czy atrakcja jest dostępna, gdzie jest zbiórka, jaki sprzęt zapewnia, jaki jest minimalny wiek, warunki pogodowe i zasady bezpieczeństwa. Dane kontaktowe i oferta mogą się zmieniać."
+      ],
+      "headings": [
+        "Wzgórza i krajobrazy",
+        "Laguny i obszary przyrodnicze",
+        "Lasy, parki i rezerwaty",
+        "Przygoda i aktywności na świeżym powietrzu",
+        "Wycieczka poza departament",
+        "Przed wyjściem"
+      ],
+      "tips": [],
+      "captions": [],
+      "links": []
+    },
+    "p18": {
+      "title": "Sprawdź przed wyjściem",
+      "paragraphs": [
+        "Zeskanuj kody lub otwórz linki w wersji cyfrowej."
+      ],
+      "headings": [
+        ""
+      ],
+      "tips": [],
+      "captions": [
+        "Zakątek do odkrywania we własnym tempie."
+      ],
+      "links": [
+        "Parki i obszary przyrodnicze",
+        "Oficjalna informacja turystyczna"
+      ]
+    },
+    "p19": {
+      "title": "Odpoczynek i dobre samopoczucie",
+      "paragraphs": [
+        "Punkty widokowe, plaża i chwile, w których można na nowo poczuć spokój Maldonado."
+      ],
+      "headings": [
+        ""
+      ],
+      "tips": [],
+      "captions": [
+        "Punkty widokowe i chwile zadumy",
+        "Plaże na wypoczynek"
+      ],
+      "links": []
+    },
+    "p20": {
+      "title": "Odpoczynek i dobre samopoczucie",
+      "paragraphs": [
+        "Zwolnij, odetchnij i ciesz się chwilą.",
+        "W Punta Ballena leży jedno z wyjątkowych miejsc Maldonado – Arboretum Lussich, rozległy rezerwat leśny łączący przyrodę, historię i ciszę.",
+        "Ścieżki prowadzą wśród drzew z różnych części świata. Można poznawać rośliny i zwierzęta, dołączyć do spaceru z przewodnikiem i podziwiać z punktów widokowych Punta Ballena i zatokę.",
+        "Zależnie od programu można też wziąć udział w jodze, spacerach medytacyjnych, kąpielach leśnych i innych zajęciach blisko natury.",
+        "W zabytkowej Casa Grande działa muzeum z ekspozycją poświęconą Antonio Lussichowi. Ze względu na możliwe remonty warto sprawdzić, które sale są otwarte. Dostępność kawiarni i innych usług też może się zmieniać.",
+        "Na spokojnych plażach, nad lagunami i w punktach widokowych można spacerować, podziwiać krajobraz, czytać lub po prostu odpocząć. Wybierz ulubioną porę dnia i zrób sobie przerwę.",
+        "W różnych miejscach regionu bywają organizowane joga, medytacja, uważne spacery i inne zajęcia relaksacyjne. Program zmienia się w ciągu roku, więc sprawdź go przed wyjściem."
+      ],
+      "tips": [
+        "Zarezerwuj czas na spacer po lesie, zwiedzanie muzeum i coś smacznego w kawiarni na koniec. To wycieczka, którą warto się nacieszyć bez pośpiechu."
+      ],
+      "headings": [
+        "",
+        "Arboretum Lussich – przyroda, kultura i wypoczynek",
+        "",
+        "",
+        "",
+        "Chwila nad wodą",
+        "Relaks w ruchu"
+      ],
+      "captions": [],
+      "links": [],
+      "tipAt": [
+        5
+      ]
+    },
+    "p21": {
+      "title": "Sprawdź przed wyjściem",
+      "paragraphs": [
+        "Zeskanuj kody lub otwórz linki w wersji cyfrowej."
+      ],
+      "tips": [],
+      "headings": [
+        ""
+      ],
+      "captions": [
+        "Zakątek do odkrycia we własnym tempie."
+      ],
+      "links": [
+        "Arboretum Lussich",
+        "Parki i spacery"
+      ]
+    },
+    "p22": {
+      "title": "Sport i wielkie wydarzenia",
+      "paragraphs": [
+        "Zawody, spotkania i emocje, którymi żyje Maldonado."
+      ],
+      "tips": [],
+      "headings": [
+        ""
+      ],
+      "captions": [
+        "Piłka nożna i wielkie zawody",
+        "Biegi i spotkania",
+        "Pływanie na otwartych wodach"
+      ],
+      "links": []
+    },
+    "p24": {
+      "title": "Sprawdź przed wyjściem",
+      "paragraphs": [
+        "Zeskanuj kody lub otwórz linki w wersji cyfrowej."
+      ],
+      "tips": [],
+      "headings": [
+        ""
+      ],
+      "captions": [
+        "Zakątek do odkrycia we własnym tempie."
+      ],
+      "links": [
+        "Kalendarz sportowy i kulturalny",
+        "Informacja turystyczna"
+      ]
+    },
+    "p25": {
+      "title": "Winiarnie Maldonado",
+      "paragraphs": [
+        "Winnice, wzgórza i wina o własnym charakterze."
+      ],
+      "tips": [],
+      "headings": [
+        ""
+      ],
+      "captions": [
+        "Winiarnie wśród wzgórz",
+        "Degustacje wśród winorośli",
+        "Tannat",
+        "Albariño"
+      ],
+      "links": []
+    },
+    "p27": {
+      "title": "Sprawdź przed wyjściem",
+      "paragraphs": [
+        "Zeskanuj kody lub otwórz linki w wersji cyfrowej."
+      ],
+      "tips": [],
+      "headings": [
+        ""
+      ],
+      "captions": [
+        "Zakątek do odkrycia we własnym tempie."
+      ],
+      "links": [
+        "Cerro del Toro · Atrakcje",
+        "Cerro del Toro · Rezerwacje"
+      ]
+    },
+    "p28": {
+      "title": "Maldonado na różne okazje i pory roku",
+      "paragraphs": [
+        "Każda pora roku ma swój urok, a każda podróż może być innym doświadczeniem."
+      ],
+      "tips": [],
+      "headings": [
+        ""
+      ],
+      "captions": [
+        "Uroczystości i spotkania",
+        "Spacery i zakupy",
+        "Uroki miasta"
+      ],
+      "links": []
+    },
+    "p30": {
+      "title": "Sprawdź przed wyjściem",
+      "paragraphs": [
+        "Zeskanuj kody lub otwórz linki w wersji cyfrowej."
+      ],
+      "tips": [],
+      "headings": [
+        ""
+      ],
+      "captions": [
+        "Zakątek do odkrycia we własnym tempie."
+      ],
+      "links": [
+        "Kalendarz wydarzeń w Maldonado",
+        "Punta del Este · Oficjalny portal turystyczny"
+      ]
+    },
+    "p31": {
+      "title": "Usługi i przydatne informacje",
+      "paragraphs": [
+        "Praktyczne informacje, które ułatwią poruszanie się po okolicy i spokojny wypoczynek."
+      ],
+      "tips": [],
+      "headings": [
+        ""
+      ],
+      "captions": [
+        "Maldonado · Punta del Este · José Ignacio"
+      ],
+      "links": []
+    },
+    "p34": {
+      "title": "Ulubione miejsca AWEN",
+      "paragraphs": [
+        "Zakątki, które polecamy odkryć."
+      ],
+      "tips": [],
+      "headings": [
+        ""
+      ],
+      "captions": [
+        "Bodega Cerro del Toro · MACA · Casapueblo · Plaże · Puerto de Punta del Este · La Musa Perfecta",
+        "Mapa poglądowa · bez zachowania skali"
+      ],
+      "links": []
+    },
+    "p36": {
+      "title": "Zaproszenie od AWEN",
+      "paragraphs": [
+        "Zeskanuj kody lub otwórz linki w wersji cyfrowej."
+      ],
+      "tips": [
+        "Nie próbuj zobaczyć wszystkiego podczas jednej podróży. Maldonado zawsze kryje jakąś niespodziankę na kolejną wizytę."
+      ],
+      "headings": [
+        "Sprawdź przed wyjściem"
+      ],
+      "captions": [],
+      "links": [
+        "Casapueblo",
+        "MACA",
+        "Bodega Cerro del Toro"
+      ],
+      "tipAt": [
+        0
+      ]
+    },
+    "p23": {
+      "title": "Sport i wielkie wydarzenia",
+      "paragraphs": [
+        "Zawody i wielkie spotkania przez cały rok.",
+        "Campus Municipal to jeden z głównych ośrodków sportowych departamentu. Odbywają się tu treningi, zawody i zajęcia z pływania, gimnastyki, karate, piłki ręcznej i innych dyscyplin.",
+        "Zimą również przyjeżdżają tu sportowcy i rodziny na turnieje i spotkania. Jeśli w czasie twojej wizyty odbywają się zawody, sprawdź program i zasady wstępu.",
+        "Na położonym w pobliżu kompleksu Estadio Domingo Burgueño Miguel odbywają się mecze i turnieje piłkarskie. Do Maldonado przyciągają też imprezy sportowe rangi krajowej i międzynarodowej.",
+        "W departamencie działają kluby i obiekty do gry w golfa, tenisa i padla, a także do jazdy konnej i polo. Kluby golfowe to m.in. Cantegril Country Club, La Barra Golf Club i Club del Lago Golf.",
+        "Na wybrzeżu i lagunach można żeglować, surfować, uprawiać kitesurfing, pływać kajakiem, kanadyjką, na desce SUP i wpław na otwartych wodach. Są też biegi, kolarstwo i aktywności przygodowe na świeżym powietrzu.",
+        "W ciągu roku odbywają się m.in. IRONMAN 70.3, Maratón Internacional de Punta del Este, Corrida San Fernando, Doble San Antonio i GFNY Punta del Este, a także spotkania golfowe, tenisowe, polo i regaty. Terminy i miejsca zależą od edycji.",
+        "AWEN gości osoby przyjeżdżające do Maldonado na zawody i spotkania sportowe oraz ich bliskich. Sprawdź aktualny kalendarz, by zaplanować pobyt."
+      ],
+      "tips": [],
+      "headings": [
+        "",
+        "Campus Municipal de Maldonado – sport przez cały rok",
+        "",
+        "Piłka nożna i wielkie spotkania",
+        "Golf, tenis i inne dyscypliny",
+        "Na wodzie, na trasach i w plenerze",
+        "Najważniejsze wydarzenia",
+        "Jeśli przyjeżdżasz na zawody"
+      ],
+      "captions": [],
+      "links": []
+    },
+    "p26": {
+      "title": "Winiarnie Maldonado",
+      "paragraphs": [
+        "Winnice, wzgórza i wina o własnym charakterze.",
+        "Maldonado słynie już z win o własnym charakterze. Bliskość oceanu, wzgórza i różnorodne gleby kształtują miejscowe winnice. Podczas wizyt poznasz przedsięwzięcia, krajobrazy i różne metody produkcji wina.",
+        "Do winiarni i projektów regionu należą Bodega Garzón, Viña Edén, Alto de la Ballena, Bodega Cerro del Toro, Bodega Oceánica José Ignacio, Cava de las Ánimas i Cofradía de la Sierra. Zależnie od sezonu również inni producenci i winnice oferują atrakcje.",
+        "Na wzgórzach Piriápolis Bodega Cerro del Toro zaprasza do odkrywania win regionu w naturalnej scenerii. To okazja, by podziwiać krajobraz i poznać projekt winiarski o własnym charakterze.",
+        "W Punta del Este i Maldonado działają specjalistyczne sklepy z winem oraz punkty oferujące etykiety krajowe i zagraniczne. Urugwajskie wina kupisz też w supermarketach i delikatesach. Sprawdź adres, godziny otwarcia i dostępność w danym sklepie.",
+        "Winiarnie mogą wymagać rezerwacji i oferować degustacje, zwiedzanie, obiady lub specjalne atrakcje. Przed wyjazdem zapytaj bezpośrednio o godziny, ceny, języki i wolne miejsca."
+      ],
+      "tips": [],
+      "headings": [
+        "",
+        "Region winiarski wart odkrycia",
+        "Winiarnie i projekty",
+        "AWEN poleca Bodega Cerro del Toro",
+        "Sklepy z winem i inne punkty sprzedaży",
+        "Zaplanuj wizytę"
+      ],
+      "captions": [],
+      "links": []
+    },
+    "p29": {
+      "title": "Maldonado na różne okazje i pory roku",
+      "paragraphs": [
+        "Każda podróż ma swój rytm i swoją porę.",
+        "Lato zachęca do plażowania, spacerów i aktywności na świeżym powietrzu. Jesienią i wiosną przyjemne temperatury sprzyjają odwiedzaniu miasteczek, winiarni i szlaków. Zimą wciąż można korzystać z kultury, gastronomii, sportu i wypoczynku.",
+        "Z rodziną, we dwoje, z przyjaciółmi czy w poszukiwaniu ciszy – w Maldonado można połączyć przyrodę, kulturę, zakupy, sport i dobrą kuchnię. Nie trzeba wypełniać atrakcjami każdego dnia. Czasem wystarczy spacer lub popołudnie nad morzem.",
+        "Przez cały rok Casa de la Cultura i inne miejsca oferują kino, teatr, muzykę, wystawy i zajęcia. W sezonie dochodzą bary, kluby, imprezy, kluby plażowe i koncerty w Punta del Este. Sprawdź aktualny program i zaplanuj bezpieczny powrót.",
+        "W Maldonado i Punta del Este przez cały rok odbywają się także kongresy, zjazdy, targi, wystawy i spotkania biznesowe.",
+        "Punta del Este Convention & Exhibition Center, The Grand Center, Solanas Convention Center i inne obiekty organizują wydarzenia krajowe i międzynarodowe dla specjalistów, firm, instytucji i gości.",
+        "W kompleksie Fasano Península odbywały się duże spotkania. Przed zaplanowaniem wydarzenia sprawdź aktualny program i dostępność.",
+        "Dzięki lokalizacji w Maldonado AWEN jest dogodnym wyborem dla uczestników spotkań w centrum kongresowym i innych obiektach w okolicy.",
+        "Pobyt pomyślany tak, by można było wypocząć i nacieszyć się okolicą również podczas podróży służbowej.",
+        "Przed wyjazdem przejrzyj kalendarze kulturalne, sportowe i wydarzeń. Możesz odkryć ciekawe propozycje na czas pobytu."
+      ],
+      "tips": [],
+      "headings": [
+        "",
+        "Lato, jesień, zima i wiosna",
+        "Wypoczynek po swojemu",
+        "Kultura, widowiska i życie nocne",
+        "Kongresy, wystawy i spotkania branżowe",
+        "",
+        "",
+        "",
+        "",
+        "Kalendarz na każdą wizytę"
+      ],
+      "captions": [],
+      "links": []
+    },
+    "p32": {
+      "title": "Usługi i przydatne informacje",
+      "paragraphs": [
+        "Praktyczne informacje na spokojny pobyt.",
+        "W razie bezpośredniego zagrożenia dzwoń pod 911. Inne numery: straż pożarna 104, SAME/ASSE 105, straż przybrzeżna 106, policja drogowa 108 i CIAT (zatrucia) 1722.",
+        "Policja: 911 · Straż pożarna: 104 · Ratownictwo medyczne: 105 (ASSE) · Straż przybrzeżna: 106 · Policja drogowa: 108 · CIAT – toksykologia: 1722. Przed ostateczną publikacją zawsze należy potwierdzić aktualność numerów i usług.",
+        "W Maldonado i Punta del Este działają szpitale, placówki opieki wzajemnej, kliniki i mobilne służby ratunkowe. Można zwrócić się m.in. do SEMM-Mautone, Sanatorio Cantegril / Asistencial Médica, Sanatorio San Carlos, CASMU, Asociación Española i Clínica Punta del Este del Hospital Británico.",
+        "Umowy z ubezpieczycielami, godziny, specjalizacje i telefony mogą się zmieniać. Przed wizytą skontaktuj się z placówką i sprawdź, czy honoruje twoje ubezpieczenie.",
+        "Kursują tu autobusy lokalne i między departamentami. Trasy i rozkłady można sprawdzić w CODESA, Maldonado Turismo, Micro, Guscapar, COT, COPSA Línea Este i Turismar. Przydatne mogą być też AhíVoy, Garita, Moovit i Google Maps.",
+        "Z dworców w Maldonado, Punta del Este i Piriápolis odjeżdżają autobusy w różnych kierunkach. Sprawdź odjazdy, ceny i stanowiska w oficjalnych rozkładach i serwisach.",
+        "W regionie działają wypożyczalnie samochodów z biurami w Punta del Este lub na lotnisku. Porównaj cenę końcową, ubezpieczenie i udział własny, kaucję, limit kilometrów, paliwo, drugiego kierowcę, fotelik i zasady przekraczania granic."
+      ],
+      "tips": [],
+      "headings": [
+        "",
+        "Szybki dostęp do numerów alarmowych",
+        "Służby ratunkowe",
+        "Opieka medyczna",
+        "",
+        "Transport publiczny i dworce",
+        "",
+        "Wynajem pojazdów"
+      ],
+      "captions": [],
+      "links": []
+    },
+    "p33": {
+      "title": "Jak wypoczywać spokojnie",
+      "paragraphs": [
+        "Wychodząc z AWEN, nawet na krótko, sprawdź, czy drzwi i okna są zamknięte. Nie zostawiaj w samochodzie na widoku toreb, portfeli, telefonów ani cennych przedmiotów. Miej swoje rzeczy przy sobie, szczególnie na plażach, targach i w tłumie.",
+        "Szafy w sypialniach mają osobne zamki. Możesz schować w nich cenne przedmioty i zabrać klucz na spacer.",
+        "W różnych częściach departamentu Maldonado działa rozbudowana sieć kamer monitoringu.",
+        "Adres: Rafael Pérez del Puerto 400 y Las Flores, Maldonado.",
+        "Sieć Wi-Fi: Verónica (o hasło poproś gospodarzy).",
+        "Kontakt: Silvia 095 761 676 · Danilo 095 351 211.",
+        "Przed wydrukowaniem wydania dla gości Silvia i Danilo powinni potwierdzić aktualność tych danych kontaktowych.",
+        "Zeskanuj kody lub otwórz linki w wersji cyfrowej."
+      ],
+      "tips": [
+        "Kilka prostych środków ostrożności pozwala spokojniej cieszyć się wakacjami. Policja: 911."
+      ],
+      "headings": [
+        "",
+        "",
+        "",
+        "Informacje o AWEN",
+        "",
+        "",
+        "",
+        "Sprawdź przed wyjściem"
+      ],
+      "captions": [],
+      "links": [
+        "Turystyka i usługi",
+        "Kalendarz wydarzeń departamentu"
+      ],
+      "tipAt": [
+        3
+      ]
+    },
+    "p35": {
+      "title": "Ulubione miejsca AWEN",
+      "paragraphs": [
+        "Miejsca i atrakcje wybrane z sercem.",
+        "Niektóre miejsca urzekają nas pięknem, inne historią lub chwilami, które nam dają. Oto nasze ulubione zakątki Maldonado, które polecamy odwiedzić i poznać.",
+        "Wyjątkowe dzieło Carlosa Páeza Vilaró łączące sztukę, architekturę i morze. Jeśli możesz, zostań do zachodu słońca na tradycyjną Ceremonia del Sol.",
+        "Tętniący życiem port, w którym obok łodzi i rybaków spotkasz uchatki i nadmorskie tarasy. Możesz spacerować, obserwować i poczuć atmosferę półwyspu.",
+        "Inny sposób na poznanie Punta del Este, poprzez historie, postacie, muzykę i poezję. Ten szlak kulturalny pozwala spojrzeć na miasto nowymi oczami.",
+        "Spotkanie ze sztuką i przyrodą. Rzeźby, park i spokojne otoczenie sprawiają, że warto tu przyjść bez pośpiechu.",
+        "Na wzgórzach Piriápolis możesz odkryć wina regionu, podziwiać krajobraz i poznać projekt winiarski o indywidualnym charakterze.",
+        "Morze codziennie oferuje coś innego. Zwykle przy wschodnim wietrze wybieramy Playa Mansa, a przy zachodnim lepsze warunki mogą być na Playa Brava. Każdy dzień jest jednak inny. Wiatr, fale i flagi wskazują, gdzie korzystać z morza."
+      ],
+      "tips": [],
+      "headings": [
+        "",
+        "Wybór od serca",
+        "1. Casapueblo",
+        "2. Puerto de Punta del Este",
+        "3. La Musa Perfecta",
+        "4. MACA – Museo de Arte Contemporáneo Atchugarry",
+        "5. Bodega Cerro del Toro",
+        "6. Nasze ulubione plaże"
+      ],
+      "captions": [],
+      "links": []
+    },
+    "p37": {
+      "title": "Źródła i informacje redakcyjne",
+      "paragraphs": [
+        "Publikację opracowano na podstawie układu graficznego AWEN i okładek zatwierdzonych przez Silvię i Danila. Poniższe linki pozwalają sprawdzić informacje, które mogą się zmieniać. Przed drukiem do publicznej dystrybucji należy uzyskać zgodę na wykorzystanie zdjęć przekazanych przez gospodarzy."
+      ],
+      "tips": [],
+      "headings": [
+        ""
+      ],
+      "captions": [
+        "Ten przewodnik nie zastępuje oficjalnych źródeł, służb ratunkowych ani zaleceń bezpieczeństwa."
+      ],
+      "links": [
+        "Intendencia de Maldonado · Turystyka",
+        "Intendencia de Maldonado · Kalendarz",
+        "Ministerio de Turismo · Punta del Este",
+        "Museo Taller Casapueblo",
+        "MACA · Museo de Arte Contemporáneo Atchugarry",
+        "Museo Arboretum Lussich",
+        "Bodega Cerro del Toro",
+        "Numery alarmowe · Antel"
+      ]
+    },
+    "p38": {
+      "title": "Dziękujemy za wybór AWEN!",
+      "paragraphs": [
+        "Mamy nadzieję, że ten przewodnik zainspirował cię do poznawania Maldonado i cieszenia się wszystkim, co ma do zaoferowania: krajobrazami, ludźmi, kulturą, kuchnią i wyjątkowymi zakątkami.",
+        "Życzymy ci wygodnego, serdecznego pobytu w AWEN i wielu dobrych chwil.",
+        "Do następnego razu!",
+        "Serdecznie, Silvia i Danilo"
+      ],
+      "tips": [],
+      "headings": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "captions": [],
+      "links": []
+    }
+  }
+}

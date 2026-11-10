@@ -2,6 +2,33 @@
 
 Este proyecto contiene el sitio de un alojamiento y su administrador local para Windows. El sitio público será estático; los eventos y las imágenes se prepararán localmente y se publicarán en GitHub Pages.
 
+## Regla general de estilos y paleta aprobada
+
+- Dirección visual: costera y rústica, cálida y atemporal, con tonos naturales y materiales como lino, madera, yute y cerámica. El primer tablero «Coastal Rustic Color Palette» es una referencia conceptual; el flyer AWEN y el libro «AWEN · Lugares para descubrir» muestran la aplicación concreta que el usuario pidió analizar para definir los colores.
+- La siguiente paleta y sus usos están **aprobados por el usuario como regla general de estilos** para el sitio público y el administrador local. Reemplaza la extracción preliminar del primer tablero. Usar estos hex como valores de referencia del proyecto y respetar sus funciones en las interfaces que se creen o modifiquen.
+- Se revisaron las 38 páginas del PDF. El libro usa crema, azul petróleo, azul grisáceo, arena dorada y detalles salvia. El flyer usa crema, arena, oliva oscuro, texto casi negro y madera. La paleta aprobada conserva ambas familias con funciones diferenciadas.
+- El PDF contiene páginas rasterizadas, sin colores ni fuentes editables. Los hex del libro proceden de píxeles planos repetidos en las imágenes incrustadas; los del flyer son medianas de muestras interiores, con filtros para separar las letras de sus fondos. Son valores representativos para normalizar el diseño, no códigos originales de autoría garantizados.
+
+| N.º | Categoría | Uso aprobado | Color | Hex | Evidencia |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Fondos | Fondo general | Crema cálido | `#F8F4ED` | Fondo plano repetido del PDF; familia también presente en el flyer |
+| 2 | Fondos | Tarjetas y paneles | Arena lino | `#F1E4D4` | Fondos de tarjetas del flyer |
+| 3 | Fondos | Consejos y destacados suaves | Salvia muy claro | `#F2F2E9` | Recuadros de consejos del PDF |
+| 4 | Títulos | Marca y títulos principales | Oliva profundo | `#333414` | Marca AWEN del flyer |
+| 5 | Textos | Texto general | Carbón cálido | `#19140C` | Texto oscuro del flyer |
+| 6 | Textos | Variante editorial para guías | Azul grisáceo | `#244D5B` | Párrafos del PDF |
+| 7 | Acciones | Enlaces y botones del sitio; títulos de guías | Azul petróleo | `#0A4B60` | Color de títulos y códigos QR del PDF; uso en botones aprobado por el usuario |
+| 8 | Detalles | Líneas e iconos decorativos | Verde salvia | `#7E9180` | Líneas de consejos del PDF |
+| 9 | Detalles | Separadores y acentos | Arena dorada | `#CAA572` | Líneas horizontales del PDF |
+| 10 | Texturas | Ilustraciones y detalles de madera | Madera cálida | `#B58352` | Textura de los iconos del flyer |
+
+- Jerarquía de estilos: fondos crema y arena, títulos oliva y texto general carbón. Reservar el azul grisáceo para la variante editorial y el azul petróleo para acciones y contenidos de la guía; no alternar los colores de párrafo sin criterio dentro de una misma sección.
+- Al implementar las interfaces, centralizar los colores en variables de estilo con nombres semánticos según su función, en lugar de dispersar códigos hex por los componentes. La dirección visual y la paleta son comunes al sitio y al administrador.
+- Salvia, arena dorada y madera son acentos; no usarlos para texto pequeño sobre fondos claros. Las muestras de madera resumen una textura y no obligan a convertirla en un relleno plano.
+- Respecto de la primera propuesta, se mantienen las familias crema, beige/arena, verdes naturales y madera. El azul marino grisáceo cambia a azul petróleo. La arcilla y el gris azulado «Sea Glass» quedan fuera de la paleta de maquetación; espresso y yute no tienen un color independiente en la selección aprobada.
+- El coral del logotipo Airbnb pertenece a esa marca externa; no incorporarlo como color de AWEN. Los colores variables de fotografías, plantas, mapas y otros logotipos no se convierten automáticamente en colores de la identidad.
+- Los datos, la evidencia de muestreo y las láminas se guardan localmente en `private/design/`; la selección aprobada está en `paleta-awen-por-uso.json` y `paleta-awen-por-uso.png`. No publicar los adjuntos originales ni los materiales de revisión como parte del sitio.
+
 ## Idiomas obligatorios
 
 El idioma inicial es español. El selector debe ofrecer siempre estos ocho idiomas:
