@@ -253,39 +253,13 @@ function tocLink() {
   anchor.append(icon('index'), t('index'));
   return anchor;
 }
-function hotspot(href, label, x, y, width, height) {
-  const anchor = link(href, 'hotspot');
-  anchor.setAttribute('aria-label', label);
-  anchor.title = label;
-  Object.assign(anchor.style, {left: x/893*100+'%', top: y/1263*100+'%',
-    width: width/893*100+'%', height: height/1263*100+'%'});
-  return anchor;
-}
-function facsimile(page, data, lazy) {
-  const paper = element('div', 'paper');
-  const img = image('assets/pages/' + pad(page) + '.webp', '', lazy);
-  img.width = 893;
-  img.height = 1263;
-  img.lang = 'es';
-  paper.append(img);
-  if (page === 3) {
-    starts.forEach((start, i) => paper.append(hotspot(pageHref(start), pageData(start).title, 78, 246 + i*67.5, 744, 65)));
-    paper.append(hotspot(pageHref(2), t('welcome'), 77, 1090, 100, 49),
-      hotspot(pageHref(4), t('how'), 190, 1090, 165, 49),
-      hotspot(pageHref(38), t('farewell'), 365, 1090, 180, 49));
-  }
-  for (const [i, r] of (resources[page] || []).entries()) {
-    paper.append(hotspot(r.url, data.links?.[i] || new URL(r.url).hostname, r.x, r.y, r.width, r.height));
-  }
-  return paper;
-}
-function transcription(page, data, start) {
-  const facsimileVisible = language === 'es';
-  const article = element('article', facsimileVisible ? 'sr-only' : 'transcription');
+function formattedPage(page, data, start) {
+  const article = element('section', 'transcription');
   if (page === start && starts.includes(start)) {
     article.append(element('header', 'chapter-heading', t('chapter', {number: formatNumber.format(starts.indexOf(start) + 1)})));
   }
-  if (page === start || data.title !== pageData(start).title) {
+  const showTitle = page === start || data.title !== pageData(start).title;
+  if (showTitle) {
     article.append(element(page === start ? 'h1' : 'h2', '', data.title));
   }
   function tipsAt(position) {
@@ -299,13 +273,13 @@ function transcription(page, data, start) {
   }
   tipsAt(0);
   data.paragraphs.forEach((value, i) => {
-    if (data.headings?.[i]) article.append(element(page === start ? 'h2' : 'h3', '', data.headings[i]));
+    if (data.headings?.[i]) article.append(element(page === start || !showTitle ? 'h2' : 'h3', '', data.headings[i]));
     article.append(element('p', '', value));
     tipsAt(i+1);
   });
-  if (page === 3 && !facsimileVisible) article.append(chapters(false), otherPages());
+  if (page === 3) article.append(chapters(false), otherPages());
   const urls = resources[page] || [];
-  if (urls.length && !facsimileVisible) {
+  if (urls.length) {
     const list = element('ul', 'resources');
     urls.forEach((r, i) => {
       const item = element('li');
@@ -314,24 +288,28 @@ function transcription(page, data, start) {
     });
     article.append(list);
   }
-  const sizes = photoSizes[page] || [];
-  const count = sizes.length;
-  for (let i = 0; i < Math.max(count, data.captions?.length || 0); i++) {
-    const caption = data.captions?.[i];
-    const fig = element('figure');
-    if (!facsimileVisible && i < count) {
-      const img = image(page === 1 ? 'assets/images/puerto.webp' : photo(page, i+1), page === 1 ? t('harbor') : (caption || data.title));
-      [img.width, img.height] = sizes[i];
-      if (page === 34) {
-        const map = element('div', 'favorites-map');
-        map.append(img, element('span', 'map-label map-beaches', t('beaches')), element('span', 'map-label map-harbor', t('harbor')));
-        fig.append(map);
-      } else fig.append(img);
-    }
-    if (caption) fig.append(element('figcaption', '', caption));
-    if (fig.childElementCount) article.append(fig);
-  }
+  appendIllustrations(article, page, data);
   return article;
+}
+function appendIllustrations(article, page, data) {
+  const sizes = photoSizes[page] || [];
+  const gallery = element('div', sizes.length > 1 ? 'photo-gallery' : '');
+  sizes.forEach(([width, height], i) => {
+    const caption = data.captions[i];
+    const fig = element('figure');
+    const img = image(page === 1 ? 'assets/images/puerto.webp' : photo(page, i+1), page === 1 ? t('harbor') : (caption || data.title));
+    img.width = width;
+    img.height = height;
+    if (page === 34) {
+      const map = element('div', 'favorites-map');
+      map.append(img, element('span', 'map-label map-beaches', t('beaches')), element('span', 'map-label map-harbor', t('harbor')));
+      fig.append(map);
+    } else fig.append(img);
+    if (caption) fig.append(element('figcaption', '', caption));
+    gallery.append(fig);
+  });
+  if (sizes.length) article.append(gallery);
+  for (const note of data.captions.slice(sizes.length)) article.append(element('p', 'editorial-note', note));
 }
 function reader(page) {
   const index = sectionIndex(page);
@@ -344,8 +322,7 @@ function reader(page) {
     const part = element('div', 'reader-part');
     part.id = 'pagina-' + number;
     part.tabIndex = -1;
-    if (language === 'es') part.append(facsimile(number, data, number !== start && number !== page));
-    part.append(transcription(number, data, start));
+    part.append(formattedPage(number, data, start));
     content.append(part);
   }
   region.append(chapterNav(index), content, chapterNav(index));

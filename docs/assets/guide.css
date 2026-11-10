@@ -112,20 +112,20 @@ footer i { height: 15px; border-left: 1px solid var(--gold); }
 .chapter-turn:hover strong, .toc-link:hover { text-decoration: underline; }
 .chapter-content { width: min(752px, 95%); margin: auto; padding-block: 22px; }
 .reader-part { position: relative; }
-.reader-part + .reader-part .paper { margin-top: 14px; }
 .reader-part + .reader-part .transcription { padding-top: 0; }
-.paper { position: relative; background: var(--background); box-shadow: 0 2px 14px color-mix(in srgb, var(--heading) 12%, transparent); }
-.paper > img { width: 100%; height: auto; display: block; }
-.hotspot { position: absolute; border-radius: 3px; }
-.hotspot:hover, .hotspot:focus-visible { background: color-mix(in srgb, var(--action) 9%, transparent); outline: 2px solid var(--action); outline-offset: 1px; }
 .transcription { padding: clamp(21px, 5vw, 60px); background: var(--background); color: var(--editorial); line-height: 1.65; overflow-wrap: anywhere; }
 .transcription h1 { color: var(--action); font: 500 clamp(2rem, 4vw, 3.5rem)/1.12 var(--serif); margin-bottom: .55em; }
 .chapter-heading { margin-bottom: 1.25rem; padding-bottom: .45rem; border-bottom: 1px solid var(--gold); color: var(--editorial); font-size: .875rem; font-weight: 650; }
 .transcription h2, .transcription h3 { color: var(--action); font: 600 1.35rem/1.3 var(--serif); margin-top: 1.5em; }
-.transcription h2 { font-size: clamp(1.45rem, 2.8vw, 2rem); margin-top: 0; }
+.transcription h2 { font-size: clamp(1.45rem, 2.8vw, 2rem); }
+.transcription > h2:first-child { margin-top: 0; }
 .transcription p, .transcription li { margin-top: .75em; }
 .transcription aside { background: var(--tip); border-left: 3px solid var(--sage); padding: .8em 1em; margin-top: 1em; }
 .transcription figure { margin-top: 22px; }
+.photo-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 22px; align-items: start; }
+.photo-gallery figure { margin: 0; }
+.photo-gallery figure:first-child:nth-last-child(3) { grid-column: 1 / -1; }
+.editorial-note { font-style: italic; }
 .transcription figure img { display: block; max-width: 100%; height: auto; max-height: 550px; object-fit: contain; margin-inline: auto; }
 .transcription figcaption { font-style: italic; text-align: center; margin-top: 6px; }
 .transcription ul, .transcription ol { padding-inline-start: 1.5em; }
