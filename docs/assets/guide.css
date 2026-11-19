@@ -57,8 +57,8 @@ h1, h2, h3 { text-wrap: pretty; }
 .language-option[aria-selected="true"]::after { background: var(--action); }
 .next-event { background: var(--panel); border-bottom: 1px solid var(--rule); }
 .next-event-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; }
-.next-event-info { padding-inline-start: 9px; border-inline-start: 3px solid var(--sage); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .88rem; line-height: 1.35; }
-.next-event-info strong { display: block; overflow: hidden; text-overflow: ellipsis; color: var(--heading); }
+.next-event-info { margin-block: 4px; padding-inline-start: 9px; border-inline-start: 3px solid var(--sage); overflow-wrap: anywhere; font-size: .88rem; line-height: 1.35; }
+.next-event-info strong { color: var(--heading); }
 .next-event-link { display: inline-flex; align-items: center; min-height: 32px; white-space: nowrap; font-size: .86rem; font-weight: 600; }
 .cover {
   --cover-gap: clamp(25px, 5.5vw, 85px);
@@ -84,6 +84,14 @@ h1, h2, h3 { text-wrap: pretty; }
 .chapter-list { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(25px, 4.2vw, 66px); padding: 0; margin: 0; }
 .chapter-link { display: flex; gap: clamp(12px, 1.4vw, 20px); min-height: 94px; border-top: 1px solid var(--soft-rule); padding: 12px 2px; }
 .chapter-link img { width: 84px; height: 63px; object-fit: cover; border-radius: 2px; flex: none; }
+.chapter-photo {
+  --photo-edge: 3px;
+  --photo-fade: transparent, currentColor var(--photo-edge), currentColor calc(100% - var(--photo-edge)), transparent;
+  border-radius: 6px;
+  mask-image: linear-gradient(to right, var(--photo-fade)), linear-gradient(to bottom, var(--photo-fade));
+  mask-composite: intersect;
+}
+.chapter-link .chapter-photo { --photo-edge: 1.5px; border-radius: 4px; }
 .chapter-detail { display: grid; gap: 4px; }
 .chapter-detail small { font-size: .65rem; letter-spacing: .13em; font-weight: 600; color: var(--editorial); text-transform: uppercase; }
 .chapter-detail strong { color: var(--heading); font: 500 clamp(1.15rem, 1.65vw, 1.5rem)/1.15 var(--serif); }

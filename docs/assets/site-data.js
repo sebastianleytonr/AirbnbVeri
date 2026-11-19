@@ -45,10 +45,15 @@ const AwenData = (() => {
   const strings = values => Array.isArray(values) && values.every(value => typeof value === 'string');
   const parameters = message => (message.match(/\{\w+\}/g) || []).sort().join(',');
 
-  function validateMessages(messages, reference) {
+  function validateMessages(messages, reference, matchKeys = false) {
     if (!record(messages)) throw new Error('Missing messages');
+    if (matchKeys && Object.keys(messages).length !== Object.keys(reference).length) throw new Error('Inconsistent messages');
     for (const [key, source] of Object.entries(reference)) {
       const message = messages[key];
+      if (record(source)) {
+        validateMessages(message, source, matchKeys);
+        continue;
+      }
       if (typeof message !== 'string' || !message.trim() || parameters(message) !== parameters(source)) {
         throw new Error('Invalid message: ' + key);
       }
@@ -56,11 +61,14 @@ const AwenData = (() => {
   }
 
   function validateLocale(locale, reference, spanish) {
-    for (const group of ['ui', 'calendar']) {
-      validateMessages(locale[group], reference[group]);
+    for (const group of ['ui', 'calendar', 'about']) {
+      // The live gallery can change before the snapshot for local use is rebuilt.
+      const required = group === 'about'
+        ? {...reference.about, photos: Object.fromEntries(AwenPhotos.map(photo => [photo.altKey, '']))}
+        : reference[group];
+      validateMessages(locale[group], required);
       // Additional messages are allowed when every language supplies them.
-      validateMessages(locale[group], spanish[group]);
-      if (Object.keys(locale[group]).length !== Object.keys(spanish[group]).length) throw new Error('Inconsistent messages');
+      validateMessages(locale[group], spanish[group], true);
     }
     if (!strings(locale.chapters) || !record(locale.pages)) throw new Error('Invalid guide');
     for (const key of Object.keys(reference.pages)) {

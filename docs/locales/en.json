@@ -26,8 +26,27 @@
     "tip": "A tip from AWEN",
     "beaches": "Beaches"
   },
+  "about": {
+    "tab": "About Awen",
+    "title": "About us...",
+    "welcome": "Welcome to Awen! We’re Silvia and Danilo. We hope you find time here to linger over a cup of coffee or lose track of time on a walk along the shore. Thank you for choosing to stay with us. It means a lot to share our home with you for a few days.",
+    "gallery": "Photo gallery",
+    "previous": "Previous photo",
+    "next": "Next photo",
+    "pause": "Pause slideshow",
+    "play": "Play slideshow",
+    "enlarge": "Enlarge photo",
+    "close": "Close enlarged photo",
+    "position": "Photo {current} of {total}",
+    "photos": {
+      "patio": "A sofa and table beneath a pergola covered in greenery",
+      "costa": "The sun sets over the sea beside the white terraces of Casapueblo",
+      "puerto": "Sailboats moored in the harbor at Punta del Este"
+    }
+  },
   "calendar": {
     "nextEvent": "Next event",
+    "nextEventSummary": "Next event: {name} - {date} {time} - {location}",
     "fullCalendar": "Calendar",
     "noUpcoming": "There are no upcoming events.",
     "eventSummaryUnavailable": "The next event could not be loaded.",

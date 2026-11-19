@@ -26,8 +26,27 @@
     "tip": "Wskazówka od AWEN",
     "beaches": "Plaże"
   },
+  "about": {
+    "tab": "O Awen",
+    "title": "O nas...",
+    "welcome": "Witaj w Awen! Tu Silvia i Danilo. Mamy nadzieję, że znajdziesz tu czas na filiżankę kawy bez pośpiechu albo na spacer brzegiem morza tak przyjemny, że zapomnisz o zegarku. Dziękujemy, że jesteś z nami. Cieszymy się, że przez kilka dni nasz dom będzie też twoim domem.",
+    "gallery": "Galeria zdjęć",
+    "previous": "Poprzednie zdjęcie",
+    "next": "Następne zdjęcie",
+    "pause": "Wstrzymaj pokaz zdjęć",
+    "play": "Uruchom pokaz zdjęć",
+    "enlarge": "Powiększ zdjęcie",
+    "close": "Zamknij powiększone zdjęcie",
+    "position": "Zdjęcie {current} z {total}",
+    "photos": {
+      "patio": "Sofa i stół pod pergolą porośniętą roślinami",
+      "costa": "Słońce zachodzi nad morzem tuż obok białych tarasów Casapueblo",
+      "puerto": "Żaglówki zacumowane w porcie w Punta del Este"
+    }
+  },
   "calendar": {
     "nextEvent": "Najbliższe wydarzenie",
+    "nextEventSummary": "Najbliższe wydarzenie: {name} - {date} {time} - {location}",
     "fullCalendar": "Kalendarz",
     "noUpcoming": "Nie ma nadchodzących wydarzeń.",
     "eventSummaryUnavailable": "Nie udało się wczytać najbliższego wydarzenia.",
