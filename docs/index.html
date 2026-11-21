@@ -7,12 +7,15 @@
   <meta name="description" content="Una invitación a explorar, disfrutar y enamorarse de Maldonado.">
   <title>Lugares para descubrir · AWEN</title>
   <link rel="icon" href="assets/images/awen.png">
-  <link rel="stylesheet" href="assets/guide.css?v=11">
+  <link rel="stylesheet" href="assets/guide.css?v=13">
   <link rel="stylesheet" href="assets/map-labels.css?v=2">
-  <link rel="stylesheet" href="assets/calendar.css?v=1">
-  <script defer src="assets/site-data.js?v=2"></script>
-  <script defer src="assets/calendar.js?v=5"></script>
-  <script defer src="assets/guide.js?v=10"></script>
+  <link rel="stylesheet" href="assets/calendar.css?v=2">
+  <link rel="stylesheet" href="assets/about.css?v=2">
+  <script defer src="assets/site-data.js?v=3"></script>
+  <script defer src="assets/calendar.js?v=6"></script>
+  <script defer src="assets/sobre-awen/fotos.js?v=1"></script>
+  <script defer src="assets/about.js?v=3"></script>
+  <script defer src="assets/guide.js?v=14"></script>
 </head>
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
@@ -66,7 +69,11 @@
   <header class="masthead">
     <div class="masthead-inner">
       <a class="brand" href="#portada"><img src="assets/images/awen.png" alt="Awen" width="140" height="50"></a>
-      <nav><a class="tab" href="#portada" id="tab" aria-current="page"></a><a class="tab" href="#calendario" id="calendar-tab"></a></nav>
+      <nav>
+        <a class="tab" href="#portada" id="tab" data-title="title" aria-current="page"></a>
+        <a class="tab" href="#calendario" id="calendar-tab" data-title="calendar.title" data-description="calendar.subtitle"></a>
+        <a class="tab" href="#sobre-awen" id="about-tab" data-title="about.tab" data-description="about.welcome"></a>
+      </nav>
       <div class="language">
         <label class="language-native">
           <select id="language" aria-label="Idioma" translate="no">

@@ -3,6 +3,7 @@
 // Civil dates use UTC for arithmetic; event instants always use the venue's zone.
 const AwenCalendar = (() => {
   const timeZone = 'America/Montevideo';
+  const eventTimeFormat = language => new Intl.DateTimeFormat(language, {timeZone, hour: '2-digit', minute: '2-digit'});
   const locales = ['es', 'en', 'pt-BR', 'fr', 'it', 'de', 'pl', 'ru'];
   const dayKeyFormat = new Intl.DateTimeFormat('en', {timeZone, year: 'numeric', month: '2-digit', day: '2-digit'});
   const dayKey = instant => {
@@ -102,9 +103,10 @@ const AwenCalendar = (() => {
   }
   function nextEventRow({language, t}) {
     const row = node('aside', 'next-event');
+    row.hidden = true;
     row.setAttribute('aria-label', t('nextEvent'));
     const inner = node('div', 'next-event-inner wrap');
-    const info = node('p', 'next-event-info', t('loading'));
+    const info = node('p', 'next-event-info');
     info.setAttribute('aria-live', 'polite');
     info.setAttribute('aria-busy', 'true');
     const link = node('a', 'next-event-link', t('fullCalendar'));
@@ -124,21 +126,26 @@ const AwenCalendar = (() => {
       const now = Date.now();
       next = events.find(event => event.instant.getTime() > now);
       if (next) {
-        const name = eventText('strong', next.name, language);
-        name.title = name.textContent;
-        info.replaceChildren(name);
+        info.replaceChildren(t('nextEventSummary', {
+          name: eventText('strong', next.name, language),
+          date: new Intl.DateTimeFormat(language, {timeZone, dateStyle: 'medium'}).format(next.instant),
+          time: eventTimeFormat(language).format(next.instant),
+          location: eventText('span', next.location, language)
+        }));
         if (next.mock) info.append(node('span', 'sr-only', t('mock')));
         // A tab can stay open past the event's start. Cap long delays at the browser timer limit.
         nextEventTimer = setTimeout(() => show(events), Math.min(next.instant.getTime() - now, 2147483647));
       } else {
-        info.textContent = t('noUpcoming');
+        info.replaceChildren();
       }
       info.setAttribute('aria-busy', 'false');
+      row.hidden = !next;
     }
     loadEvents().then(show).catch(() => {
       if (!row.isConnected) return;
       info.textContent = t('eventSummaryUnavailable');
       info.setAttribute('aria-busy', 'false');
+      row.hidden = false;
     });
     return row;
   }
@@ -151,7 +158,7 @@ const AwenCalendar = (() => {
     const plurals = new Intl.PluralRules(language);
     const format = (key, options) => new Intl.DateTimeFormat(language, {...options, timeZone: 'UTC'}).format(civil(key));
     const fullDate = key => format(key, {dateStyle: 'full'});
-    const time = event => new Intl.DateTimeFormat(language, {timeZone, hour: '2-digit', minute: '2-digit'}).format(event.instant);
+    const time = eventTimeFormat(language);
     const countText = (count, prefix = 'eventCount') => {
       const category = plurals.select(count);
       return t(prefix + category[0].toUpperCase() + category.slice(1), {count: number.format(count)});
@@ -239,7 +246,7 @@ const AwenCalendar = (() => {
         const fields = node('dl');
         for (const [label, value] of [
           ['date', node('dd', '', fullDate(event.date))],
-          ['time', node('dd', '', time(event))],
+          ['time', node('dd', '', time.format(event.instant))],
           ['place', eventText('dd', event.location, language)],
           ['extraInfo', eventText('dd', event.extraInfo, language)]
         ]) {
@@ -309,7 +316,7 @@ const AwenCalendar = (() => {
           control.append(date);
           for (const event of items.slice(0, 2)) {
             const summary = node('span', 'calendar-event-preview');
-            summary.append(node('span', 'calendar-event-time', time(event)), eventText('span', event.name, language));
+            summary.append(node('span', 'calendar-event-time', time.format(event.instant)), eventText('span', event.name, language));
             control.append(summary);
           }
           if (items.length > 2) control.append(node('span', 'calendar-more', countText(items.length - 2, 'more')));
@@ -343,7 +350,7 @@ const AwenCalendar = (() => {
         for (const event of items) {
           const card = button('calendar-event-card', null, () => openDay(key, card));
           card.dataset.eventId = event.id;
-          card.append(node('span', 'calendar-event-time', time(event)), eventText('strong', event.name, language), eventText('span', event.location, language));
+          card.append(node('span', 'calendar-event-time', time.format(event.instant)), eventText('strong', event.name, language), eventText('span', event.location, language));
           if (event.mock) card.append(node('span', 'event-mock', t('mock')));
           section.append(card);
         }

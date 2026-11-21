@@ -17,12 +17,12 @@ const photoSizes = {
   28: [[829, 349], [406, 284], [404, 284]], 30: [[712, 307]], 31: [[893, 713]], 34: [[817, 626]]
 };
 const main = document.querySelector('main');
+const tabs = Array.from(document.querySelectorAll('.masthead nav .tab'));
 const selector = document.querySelector('#language');
 const languages = Array.from(selector.options, option => option.value);
 const key = 'awen.language';
 const pad = number => String(number).padStart(2, '0');
 const pageHref = number => '#pagina-' + number;
-const photo = (number, position = 1) => 'assets/images/guia-' + pad(number) + '-' + position + '.webp';
 let language = 'es';
 let dictionary;
 let resources;
@@ -152,6 +152,7 @@ function icon(name) {
   const paths = {
     right: 'M4 12h16m-6-6 6 6-6 6',
     next: 'm9 5 7 7-7 7', previous: 'm15 5-7 7 7 7',
+    pause: 'M8 5v14m8-14v14', play: 'm8 5 11 7-11 7z',
     index: 'M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01'
   };
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -170,9 +171,23 @@ function image(src, alt, lazy = true) {
   if (lazy) img.loading = 'lazy';
   return img;
 }
+function chapterImage(page, alt, position = 1) {
+  const img = image('assets/images/guia-' + pad(page) + '-' + position + '.webp', alt);
+  // Pages 31 and 34 contain maps.
+  if (page !== 31 && page !== 34) img.classList.add('chapter-photo');
+  return img;
+}
 function t(id, parameters = {}) {
   const value = id.includes('.') ? id.split('.').reduce((entry, key) => entry[key], dictionary) : dictionary.ui[id];
-  return value.replace(/\{(\w+)\}/g, (_, name) => parameters[name]);
+  if (!value.includes('{')) return value;
+  const parts = value.split(/\{(\w+)\}/).map((part, index) => index % 2 ? parameters[part] : part);
+  // Keep language attributes on translated event fields inserted into a message.
+  if (parts.some(part => part instanceof Node)) {
+    const fragment = document.createDocumentFragment();
+    fragment.append(...parts);
+    return fragment;
+  }
+  return parts.join('');
 }
 function pageData(page) {
   return dictionary.pages['p' + pad(page)];
@@ -186,7 +201,7 @@ function chapters() {
     const details = element('span', 'chapter-detail');
     details.append(element('small', '', t('chapter', {number: formatNumber.format(number)})),
       element('strong', '', chapterTitle(start)));
-    if (photoSizes[start]) anchor.append(image(photo(start), ''));
+    if (photoSizes[start]) anchor.append(chapterImage(start, ''));
     anchor.append(details, icon('right'));
     item.append(anchor);
     list.append(item);
@@ -285,7 +300,7 @@ function appendIllustrations(article, page, data) {
   sizes.forEach(([width, height], i) => {
     const caption = data.captions[i];
     const fig = element('figure');
-    const img = image(photo(page, i+1), caption || data.title);
+    const img = chapterImage(page, caption || data.title, i + 1);
     img.width = width;
     img.height = height;
     if (page === 34) {
@@ -327,22 +342,31 @@ function render(navigate = false) {
     return;
   }
   AwenCalendar.unmount();
-  const calendar = location.hash === '#calendario';
-  const title = calendar ? t('calendar.title') : page ? chapterTitle(chapterPages[chapterIndex(page)][0]) : t('title');
+  AwenAbout.unmount();
+  const activeTab = tabs.find(tab => tab.hash === location.hash) || document.querySelector('#tab');
+  for (const tab of tabs) {
+    tab.textContent = t(tab.dataset.title);
+    if (tab === activeTab) tab.setAttribute('aria-current', 'page');
+    else tab.removeAttribute('aria-current');
+  }
+  const title = page ? chapterTitle(chapterPages[chapterIndex(page)][0]) : activeTab.textContent;
   document.title = title + ' · AWEN';
   document.documentElement.lang = language;
-  document.querySelector('meta[name="description"]').content = t(calendar ? 'calendar.subtitle' : 'subtitle');
-  document.querySelector('#tab').textContent = t('title');
-  document.querySelector('#calendar-tab').textContent = t('calendar.title');
-  const activeTab = document.querySelector(calendar ? '#calendar-tab' : '#tab');
-  document.querySelector(calendar ? '#tab' : '#calendar-tab').removeAttribute('aria-current');
-  activeTab.setAttribute('aria-current', 'page');
+  document.querySelector('meta[name="description"]').content = t(activeTab.dataset.description || 'subtitle');
   document.querySelector('#skip').textContent = t('skip');
   selector.setAttribute('aria-label', t('language'));
   languagePicker.sync();
   if (location.protocol === 'file:') syncLocalFolder();
   const calendarOptions = {language, t: (id, params) => t('calendar.' + id, params)};
-  main.replaceChildren(calendar ? AwenCalendar.render(calendarOptions) : page ? reader(page) : home(calendarOptions));
+  let content;
+  if (activeTab.hash === '#sobre-awen') {
+    content = AwenAbout.render({language, t: (id, params) => t('about.' + id, params), photos: AwenPhotos});
+  } else if (activeTab.hash === '#calendario') {
+    content = AwenCalendar.render(calendarOptions);
+  } else {
+    content = page ? reader(page) : home(calendarOptions);
+  }
+  main.replaceChildren(content);
   if (location.hash === '#indice') {
     const index = document.querySelector('#indice');
     index.focus({preventScroll: true});
@@ -352,7 +376,7 @@ function render(navigate = false) {
     if (navigate) target.focus({preventScroll: true});
     target.scrollIntoView();
   } else if (navigate) {
-    if (page || calendar) main.focus({preventScroll: true});
+    if (page || activeTab.hash !== '#portada') main.focus({preventScroll: true});
     window.scrollTo(0, 0);
   }
 }
@@ -392,7 +416,7 @@ async function selectLanguage(code, remember = false) {
   const serial = ++request;
   try {
     const [next, book] = await Promise.all([
-      AwenData.read('locales/' + code + '.json?v=9'), resources ? Promise.resolve({resources}) : AwenData.read('assets/book.json')
+      AwenData.read('locales/' + code + '.json?v=11'), resources ? Promise.resolve({resources}) : AwenData.read('assets/book.json')
     ]);
     if (serial !== request) return;
     dictionary = next;
@@ -412,6 +436,7 @@ async function selectLanguage(code, remember = false) {
     const retry = element('button', '', dictionary ? t('retry') : 'Volver a intentar');
     retry.onclick = () => selectLanguage(code, remember);
     error.append(element('p', '', dictionary ? t('error') : 'No se pudo cargar la guía.'), retry);
+    AwenAbout.unmount();
     main.replaceChildren(error);
     selector.value = language;
     languagePicker.sync();

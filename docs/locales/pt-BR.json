@@ -26,8 +26,27 @@
     "tip": "Uma dica da AWEN",
     "beaches": "Praias"
   },
+  "about": {
+    "tab": "Sobre a Awen",
+    "title": "Sobre nós...",
+    "welcome": "Que bom receber você na Awen! Somos Silvia e Danilo. Esperamos que por aqui dê tempo de saborear um café sem pressa ou caminhar à beira-mar até perder a noção da hora. Agradecemos de coração por escolher a nossa casa. Ficamos felizes em saber que, por alguns dias, ela também é sua.",
+    "gallery": "Galeria de fotos",
+    "previous": "Foto anterior",
+    "next": "Próxima foto",
+    "pause": "Pausar a apresentação de fotos",
+    "play": "Iniciar a apresentação de fotos",
+    "enlarge": "Ampliar foto",
+    "close": "Fechar foto ampliada",
+    "position": "Foto {current} de {total}",
+    "photos": {
+      "patio": "Um sofá e uma mesa sob um pergolado coberto de plantas",
+      "costa": "O sol se põe sobre o mar ao lado dos terraços brancos de Casapueblo",
+      "puerto": "Veleiros atracados no porto de Punta del Este"
+    }
+  },
   "calendar": {
     "nextEvent": "Próximo evento",
+    "nextEventSummary": "Próximo evento: {name} - {date} {time} - {location}",
     "fullCalendar": "Calendário",
     "noUpcoming": "Nenhum evento previsto.",
     "eventSummaryUnavailable": "Não foi possível carregar o próximo evento.",
