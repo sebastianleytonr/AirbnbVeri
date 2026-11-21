@@ -36,6 +36,12 @@ Al abrir el HTML desde el disco, el sitio usa una copia de los JSON incluida en 
 
 Si querés incorporar los datos editados a la copia que se abre por defecto con doble clic, ejecutá `python private/refresh_file_data.py` desde la raíz del proyecto.
 
+## Sobre Awen
+
+La pestaña «Sobre Awen» se abre en `#sobre-awen`. Para cambiar la bienvenida, editá `about.welcome` en los ocho archivos de `docs/locales/`.
+
+Las fotos están en `docs/assets/sobre-awen/`. Podés reemplazarlas conservando sus nombres o agregar una imagen y anotarla en `fotos.js` dentro de esa carpeta. El orden de la lista es el del carrusel. Cada entrada indica el nombre del archivo en `file` y la clave de su descripción en `altKey`. Al cambiar una foto, actualizá su descripción en `about.photos` en los ocho idiomas.
+
 ## Calendario de eventos
 
 La pestaña «Calendario de Eventos» se abre en `#calendario`. Incluye vistas de mes, semana y día, navegación anterior/siguiente, botón Hoy y selector de fecha. Las semanas empiezan el lunes. Los días con eventos se destacan; al tocarlos se abre un diálogo con todos sus eventos, nombre, fecha, hora, lugar e información extra. Se cierra con el botón Cerrar, Escape o tocando fuera.
