@@ -29,7 +29,7 @@
   "about": {
     "tab": "Sobre Awen",
     "title": "Sobre nosotros...",
-    "welcome": "¡Qué lindo tenerte en Awen! Somos Silvia y Danilo. Ojalá acá encuentres tiempo para tomar un café sin apuro o caminar por la orilla hasta olvidarte de la hora. Gracias por elegir nuestra casa. Nos hace felices que también sea la tuya por unos días.",
+    "welcome": "Prueba con Veri",
     "gallery": "Galería de fotos",
     "previous": "Foto anterior",
     "next": "Foto siguiente",
@@ -41,7 +41,8 @@
     "photos": {
       "patio": "Un sofá y una mesa bajo una pérgola cubierta de plantas",
       "costa": "El sol se pone sobre el mar junto a las terrazas blancas de Casapueblo",
-      "puerto": "Veleros amarrados en el puerto de Punta del Este"
+      "puerto": "Veleros amarrados en el puerto de Punta del Este",
+      "72e61880-94f1-49e8-a835-96bf1a089ee0": "Cara de Seba"
     }
   },
   "calendar": {

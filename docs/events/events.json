@@ -71,6 +71,20 @@
         "pl": "Fikcyjne wydarzenie do testowania kalendarza. Wieczór muzyki akustycznej i wspólnego spędzania czasu w AWEN. To nie jest potwierdzona atrakcja.",
         "ru": "Вымышленное событие для проверки календаря. Вечер акустической музыки и общения в AWEN. Это не подтверждённое мероприятие."
       }
+    },
+    {
+      "id": "debdf0ce-2596-4a89-bf03-c9c8e2e1207c",
+      "startsAt": "2026-11-23T16:22:43Z",
+      "name": {
+        "es": "Comer Pan"
+      },
+      "location": {
+        "es": "Fiambreria"
+      },
+      "extraInfo": {
+        "es": "Otras cosas"
+      },
+      "mock": false
     }
   ]
 }
