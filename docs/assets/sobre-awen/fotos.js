@@ -2,8 +2,8 @@
 
 const AwenPhotos = [
   {
-    "altKey": "72e61880-94f1-49e8-a835-96bf1a089ee0",
-    "file": "72e61880-94f1-49e8-a835-96bf1a089ee0.png"
+    "file": "puerto.webp",
+    "altKey": "puerto"
   },
   {
     "file": "patio.webp",
@@ -14,7 +14,7 @@ const AwenPhotos = [
     "altKey": "costa"
   },
   {
-    "file": "puerto.webp",
-    "altKey": "puerto"
+    "altKey": "e6ed971c-1fd0-458e-8059-de943878ac1e",
+    "file": "e6ed971c-1fd0-458e-8059-de943878ac1e.png"
   }
 ];

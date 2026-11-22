@@ -1,21 +1,7 @@
 'use strict';
 
-// The web chapters use the original page numbers so shared links stay valid.
-const chapterPages = [
-  [2], [5, 6, 7], [8, 9, 10], [11, 12, 13], [14, 15], [16, 17, 18], [19, 20, 21],
-  [22, 23, 24], [25, 26, 27], [28, 29, 30], [31, 32, 33], [34, 35, 36], [38]
-];
+const {chapterPages} = AwenGuide;
 const legacyPages = {1: '#portada', 3: '#indice', 4: '#indice', 37: '#pagina-38'};
-// Reserve space for photos so a link into a chapter stays aligned as images load.
-const photoSizes = {
-  2: [[405, 304]], 5: [[460, 631], [365, 653]], 7: [[709, 307]],
-  8: [[695, 384], [655, 331]], 11: [[849, 328], [414, 292], [408, 292]], 13: [[712, 309]],
-  14: [[416, 700], [400, 182], [400, 182], [400, 233]], 16: [[887, 377], [397, 353], [465, 353]],
-  18: [[715, 307]], 19: [[807, 417], [807, 350]], 21: [[712, 307]],
-  22: [[831, 368], [404, 287], [406, 287]], 24: [[712, 307]],
-  25: [[829, 303], [382, 252], [201, 382], [203, 382]], 27: [[712, 309]],
-  28: [[829, 349], [406, 284], [404, 284]], 30: [[712, 307]], 31: [[893, 713]], 34: [[817, 626]]
-};
 const main = document.querySelector('main');
 const tabs = Array.from(document.querySelectorAll('.masthead nav .tab'));
 const selector = document.querySelector('#language');
@@ -25,7 +11,7 @@ const pad = number => String(number).padStart(2, '0');
 const pageHref = number => '#pagina-' + number;
 let language = 'es';
 let dictionary;
-let resources;
+let book;
 let formatNumber;
 let request = 0;
 let localFolderStatus = '';
@@ -171,12 +157,6 @@ function image(src, alt, lazy = true) {
   if (lazy) img.loading = 'lazy';
   return img;
 }
-function chapterImage(page, alt, position = 1) {
-  const img = image('assets/images/guia-' + pad(page) + '-' + position + '.webp', alt);
-  // Pages 31 and 34 contain maps.
-  if (page !== 31 && page !== 34) img.classList.add('chapter-photo');
-  return img;
-}
 function t(id, parameters = {}) {
   const value = id.includes('.') ? id.split('.').reduce((entry, key) => entry[key], dictionary) : dictionary.ui[id];
   if (!value.includes('{')) return value;
@@ -201,7 +181,8 @@ function chapters() {
     const details = element('span', 'chapter-detail');
     details.append(element('small', '', t('chapter', {number: formatNumber.format(number)})),
       element('strong', '', chapterTitle(start)));
-    if (photoSizes[start]) anchor.append(chapterImage(start, ''));
+    const thumbnail = book.guide.thumbnails[start];
+    if (thumbnail) anchor.append(AwenGuide.illustration(thumbnail, '', file => 'assets/images/' + encodeURIComponent(file)));
     anchor.append(details, icon('right'));
     item.append(anchor);
     list.append(item);
@@ -210,12 +191,7 @@ function chapters() {
 }
 function home(calendarOptions) {
   const wrapper = element('div', 'wrap');
-  const cover = element('section', 'cover');
-  const heading = element('header', 'cover-heading');
-  heading.append(element('p', 'location', 'Maldonado, Uruguay'), element('h1', '', t('title')));
-  const figure = element('figure', 'hero-photo');
-  figure.append(image('assets/images/puerto.webp', t('harbor'), false));
-  cover.append(heading, element('p', 'intro', t('subtitle')), figure);
+  const cover = AwenGuide.cover({dictionary, guide:book.guide, language, imageUrl:file => 'assets/images/' + encodeURIComponent(file)});
   const section = element('section', 'contents');
   section.id = 'indice';
   section.tabIndex = -1;
@@ -256,64 +232,6 @@ function tocLink() {
   anchor.append(icon('index'), t('index'));
   return anchor;
 }
-function formattedPage(page, data, chapter) {
-  const start = chapterPages[chapter][0];
-  const article = element('section', 'transcription');
-  if (page === start) {
-    article.append(element('header', 'chapter-heading', t('chapter', {number: formatNumber.format(chapter)})));
-  }
-  const showTitle = page === start || data.title !== pageData(start).title;
-  if (showTitle) {
-    article.append(element(page === start ? 'h1' : 'h2', '', data.title));
-  }
-  function tipsAt(position) {
-    data.tips.forEach((value, i) => {
-      if ((data.tipAt?.[i] ?? data.paragraphs.length) !== position) return;
-      const tip = element('aside');
-      if (page !== 36) tip.append(element('strong', '', t('tip')));
-      tip.append(element('p', '', value));
-      article.append(tip);
-    });
-  }
-  tipsAt(0);
-  data.paragraphs.forEach((value, i) => {
-    if (data.headings?.[i]) article.append(element(page === start || !showTitle ? 'h2' : 'h3', '', data.headings[i]));
-    article.append(element('p', '', value));
-    tipsAt(i+1);
-  });
-  const urls = resources[page] || [];
-  if (urls.length) {
-    const list = element('ul', 'resources');
-    urls.forEach((r, i) => {
-      const item = element('li');
-      item.append(link(r.url, '', data.links?.[i] || new URL(r.url).hostname));
-      list.append(item);
-    });
-    article.append(list);
-  }
-  appendIllustrations(article, page, data);
-  return article;
-}
-function appendIllustrations(article, page, data) {
-  const sizes = photoSizes[page] || [];
-  const gallery = element('div', sizes.length > 1 ? 'photo-gallery' : '');
-  sizes.forEach(([width, height], i) => {
-    const caption = data.captions[i];
-    const fig = element('figure');
-    const img = chapterImage(page, caption || data.title, i + 1);
-    img.width = width;
-    img.height = height;
-    if (page === 34) {
-      const map = element('div', 'favorites-map');
-      map.append(img, element('span', 'map-label map-beaches', t('beaches')), element('span', 'map-label map-harbor', t('harbor')));
-      fig.append(map);
-    } else fig.append(img);
-    if (caption) fig.append(element('figcaption', '', caption));
-    gallery.append(fig);
-  });
-  if (sizes.length) article.append(gallery);
-  for (const note of data.captions.slice(sizes.length)) article.append(element('p', 'editorial-note', note));
-}
 function reader(page) {
   const index = chapterIndex(page);
   const region = element('div', 'reader');
@@ -323,7 +241,8 @@ function reader(page) {
     const part = element('div', 'reader-part');
     part.id = 'pagina-' + number;
     part.tabIndex = -1;
-    part.append(formattedPage(number, data, index));
+    part.append(AwenGuide.section({page:number, data, dictionary, book, language,
+      imageUrl:file => 'assets/images/' + encodeURIComponent(file)}));
     content.append(part);
   }
   region.append(chapterNav(index), content, chapterNav(index));
@@ -395,11 +314,12 @@ if (location.protocol === 'file:') {
     choose.disabled = true;
     try {
       const data = await AwenData.readFolder(input.files);
+      if (!data['assets/book.json']?.guide) throw new Error('Missing guide images');
       AwenCalendar.replaceEvents(data['events/events.json']);
       AwenData.useFolder(data);
       ++request; // A pending language change may still be reading the previous files.
       dictionary = data['locales/' + language + '.json'];
-      resources = data['assets/book.json'].resources;
+      book = data['assets/book.json'];
       selector.value = language;
       localFolderStatus = 'localFolderLoaded';
       render();
@@ -415,12 +335,12 @@ if (location.protocol === 'file:') {
 async function selectLanguage(code, remember = false) {
   const serial = ++request;
   try {
-    const [next, book] = await Promise.all([
-      AwenData.read('locales/' + code + '.json?v=11'), resources ? Promise.resolve({resources}) : AwenData.read('assets/book.json')
+    const [next, nextBook] = await Promise.all([
+      AwenData.read('locales/' + code + '.json?v=11'), book ?? AwenData.read('assets/book.json?v=2')
     ]);
     if (serial !== request) return;
     dictionary = next;
-    resources = book.resources;
+    book = nextBook;
     language = code;
     selector.value = code;
     formatNumber = new Intl.NumberFormat(code);

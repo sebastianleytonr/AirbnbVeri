@@ -190,5 +190,264 @@
         "height": 125
       }
     ]
+  },
+  "guide": {
+    "thumbnails": {
+      "2": "guia-02-1.webp",
+      "5": "guia-05-1.webp",
+      "8": "guia-08-1.webp",
+      "11": "guia-11-1.webp",
+      "14": "guia-14-1.webp",
+      "16": "guia-16-1.webp",
+      "19": "guia-19-1.webp",
+      "22": "guia-22-1.webp",
+      "25": "guia-25-1.webp",
+      "28": "guia-28-1.webp",
+      "31": "guia-31-1.webp",
+      "34": "guia-34-1.webp",
+      "38": null
+    },
+    "illustrations": {
+      "2": [
+        "guia-02-1.webp"
+      ],
+      "5": [
+        "guia-05-1.webp",
+        "guia-05-2.webp"
+      ],
+      "7": [
+        "guia-07-1.webp"
+      ],
+      "8": [
+        "guia-08-1.webp",
+        "guia-08-2.webp"
+      ],
+      "11": [
+        "guia-11-1.webp",
+        "guia-11-2.webp",
+        "guia-11-3.webp"
+      ],
+      "13": [
+        "guia-13-1.webp"
+      ],
+      "14": [
+        "guia-14-1.webp",
+        "guia-14-2.webp",
+        "guia-14-3.webp",
+        "guia-14-4.webp"
+      ],
+      "16": [
+        "guia-16-1.webp",
+        "guia-16-2.webp",
+        "guia-16-3.webp"
+      ],
+      "18": [
+        "guia-18-1.webp"
+      ],
+      "19": [
+        "guia-19-1.webp",
+        "guia-19-2.webp"
+      ],
+      "21": [
+        "guia-21-1.webp"
+      ],
+      "22": [
+        "guia-22-1.webp",
+        "guia-22-2.webp",
+        "guia-22-3.webp"
+      ],
+      "24": [
+        "guia-24-1.webp"
+      ],
+      "25": [
+        "guia-25-1.webp",
+        "guia-25-2.webp",
+        "guia-25-3.webp",
+        "guia-25-4.webp"
+      ],
+      "27": [
+        "guia-27-1.webp"
+      ],
+      "28": [
+        "guia-28-1.webp",
+        "guia-28-2.webp",
+        "guia-28-3.webp"
+      ],
+      "30": [
+        "guia-30-1.webp"
+      ],
+      "31": [
+        "guia-31-1.webp"
+      ],
+      "34": [
+        "guia-34-1.webp"
+      ]
+    },
+    "sizes": {
+      "guia-02-1.webp": [
+        405,
+        304
+      ],
+      "guia-05-1.webp": [
+        460,
+        631
+      ],
+      "guia-05-2.webp": [
+        365,
+        653
+      ],
+      "guia-07-1.webp": [
+        709,
+        307
+      ],
+      "guia-08-1.webp": [
+        695,
+        384
+      ],
+      "guia-08-2.webp": [
+        655,
+        331
+      ],
+      "guia-11-1.webp": [
+        849,
+        328
+      ],
+      "guia-11-2.webp": [
+        414,
+        292
+      ],
+      "guia-11-3.webp": [
+        408,
+        292
+      ],
+      "guia-13-1.webp": [
+        712,
+        309
+      ],
+      "guia-14-1.webp": [
+        416,
+        700
+      ],
+      "guia-14-2.webp": [
+        400,
+        182
+      ],
+      "guia-14-3.webp": [
+        400,
+        182
+      ],
+      "guia-14-4.webp": [
+        400,
+        233
+      ],
+      "guia-16-1.webp": [
+        887,
+        377
+      ],
+      "guia-16-2.webp": [
+        397,
+        353
+      ],
+      "guia-16-3.webp": [
+        465,
+        353
+      ],
+      "guia-18-1.webp": [
+        715,
+        307
+      ],
+      "guia-19-1.webp": [
+        807,
+        417
+      ],
+      "guia-19-2.webp": [
+        807,
+        350
+      ],
+      "guia-21-1.webp": [
+        712,
+        307
+      ],
+      "guia-22-1.webp": [
+        831,
+        368
+      ],
+      "guia-22-2.webp": [
+        404,
+        287
+      ],
+      "guia-22-3.webp": [
+        406,
+        287
+      ],
+      "guia-24-1.webp": [
+        712,
+        307
+      ],
+      "guia-25-1.webp": [
+        829,
+        303
+      ],
+      "guia-25-2.webp": [
+        382,
+        252
+      ],
+      "guia-25-3.webp": [
+        201,
+        382
+      ],
+      "guia-25-4.webp": [
+        203,
+        382
+      ],
+      "guia-27-1.webp": [
+        712,
+        309
+      ],
+      "guia-28-1.webp": [
+        829,
+        349
+      ],
+      "guia-28-2.webp": [
+        406,
+        284
+      ],
+      "guia-28-3.webp": [
+        404,
+        284
+      ],
+      "guia-30-1.webp": [
+        712,
+        307
+      ],
+      "guia-31-1.webp": [
+        893,
+        713
+      ],
+      "guia-34-1.webp": [
+        817,
+        626
+      ],
+      "puerto.webp": [
+        893,
+        959
+      ]
+    },
+    "cover": [
+      "puerto.webp"
+    ],
+    "positions": {
+      "7": {
+        "guia-07-1.webp": "tips.0"
+      }
+    },
+    "layout": {
+      "7": {
+        "guia-07-1.webp": {
+          "align": "block",
+          "width": 52
+        }
+      }
+    }
   }
 }

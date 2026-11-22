@@ -65,7 +65,8 @@ const AwenData = (() => {
       // The live gallery can change before the snapshot for local use is rebuilt.
       const required = group === 'about'
         ? {...reference.about, photos: Object.fromEntries(AwenPhotos.map(photo => [photo.altKey, '']))}
-        : reference[group];
+        : {...reference[group]};
+      if (group === 'ui') delete required.coverPhotos;
       validateMessages(locale[group], required);
       // Additional messages are allowed when every language supplies them.
       validateMessages(locale[group], spanish[group], true);
@@ -83,7 +84,7 @@ const AwenData = (() => {
     }
   }
 
-  function validateResources(book) {
+  function validateResources(book, spanish) {
     if (!record(book?.resources)) throw new Error('Missing guide resources');
     for (const links of Object.values(book.resources)) {
       if (!Array.isArray(links)) throw new Error('Invalid resource list');
@@ -92,6 +93,18 @@ const AwenData = (() => {
           throw new Error('Invalid resource link');
         }
         if (!['x', 'y', 'width', 'height'].every(field => Number.isFinite(link[field]))) throw new Error('Invalid link area');
+      }
+    }
+    const media = book.guide;
+    if (!record(media?.thumbnails) || !record(media.illustrations) || !record(media.sizes)) throw new Error('Invalid guide images');
+    const safe = name => typeof name === 'string' && /^[\w -][\w .-]*\.(?:webp|png|jpe?g|gif|avif)$/i.test(name);
+    if (!Array.isArray(media.cover) || !media.cover.every(safe) ||
+        !media.cover.every(file => file === 'puerto.webp' || spanish.ui.coverPhotos?.[file]?.trim())) throw new Error('Invalid cover');
+    if (!Object.values(media.thumbnails).every(file => file === null || safe(file))) throw new Error('Invalid thumbnails');
+    for (const [number, files] of Object.entries(media.illustrations)) {
+      const page = spanish.pages['p' + number.padStart(2, '0')];
+      if (!page || !Array.isArray(files) || !files.every(safe) || page.captions.length < files.length) {
+        throw new Error('Invalid illustrations');
       }
     }
   }
@@ -114,7 +127,24 @@ const AwenData = (() => {
     for (const path of Object.keys(reference)) {
       if (path.startsWith('locales/')) validateLocale(documents[path], reference[path], spanish);
     }
-    validateResources(documents[bookPath]);
+    if (!documents[bookPath].guide) {
+      // Older folders used numbered image files with the first image as the
+      // chapter thumbnail; trailing captions (e.g. a map note) stay separate.
+      const illustrations = {}, thumbnails = {}, sizes = {};
+      for (const file of files) {
+        const path = file.webkitRelativePath.split('/').slice(1).join('/');
+        const match = /^assets\/images\/(guia-(\d{2})-(\d+)\.webp)$/.exec(path);
+        if (!match) continue;
+        const number = Number(match[2]);
+        (illustrations[number] ??= []).push(match[1]);
+        const size = reference[bookPath].guide?.sizes[match[1]];
+        if (size) sizes[match[1]] = size;
+      }
+      for (const images of Object.values(illustrations)) images.sort();
+      for (const [start] of AwenGuide.chapterPages) thumbnails[start] = illustrations[start]?.[0] ?? null;
+      documents[bookPath].guide = {illustrations, thumbnails, sizes, cover:['puerto.webp']};
+    }
+    validateResources(documents[bookPath], spanish);
     if (!Array.isArray(documents[eventsPath]?.events)) throw new Error('Missing events');
     return documents;
   }
